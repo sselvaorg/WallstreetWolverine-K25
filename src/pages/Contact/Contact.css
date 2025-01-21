@@ -1,0 +1,297 @@
+.contact-page{
+  font-family: arial, sans-serif;
+  background-image: url('images/sample-bg.jpeg');
+  background-size:cover;
+  background-position:center;
+  
+  height:100%;
+  width:100%;  
+  margin:0;
+
+  overflow-x: hidden;
+  padding-bottom:100px;
+}
+
+.navbar-box{
+  height:70px;
+  background-color: sandybrown;
+}
+
+.contact-container{
+  
+  
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:26px;
+  /*
+    display:flex;
+  justify-content: space-around;
+  padding-top:30px;
+  */  
+}
+
+@media(max-width: 768px){
+  .contact-container{
+    display:grid;
+    grid-template-columns: 1fr;
+    padding-bottom:100px;
+  }
+}
+
+.userBox{
+
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+
+.title{
+  font-size:2rem;
+  color:hsl(198, 70%, 40%);
+  font-weight:540;
+  width:100%;
+  text-align: center;
+}
+
+.user-details{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(109, 154, 157, 0.651);
+ 
+  margin-top:10px;
+  padding-top:30px;
+  padding-left:70px;
+  padding-right:70px;
+  padding-bottom:40px;
+  border-radius:10px;
+
+}
+
+.user-details label{
+  font-size:16px;
+  font-weight:550;
+  font-family: sans-serif;
+  margin-bottom: 15px;
+}
+
+.user-details input{
+  color:rgb(255, 255, 255);
+  background-color: hsla(0, 5%, 32%, 0.807);
+  width:410px;
+  height: 40px;
+  border-radius: 6px;
+  border:none;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  outline:none;
+  padding-left:8px;
+  transition: ease-in-out 0.25s;
+}
+
+
+.user-details input:hover{
+  background-color: hsla(0, 3%, 26%, 0.907);
+}
+
+.user-details textarea{
+  
+  background: rgba(38, 36, 36, 0.58);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.8px);
+  -webkit-backdrop-filter: blur(7.8px);
+
+  color:white;
+  width:410px;
+  height:150px;
+  margin-bottom:50px;
+  border-radius: 6px;
+  border:none;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  outline:none;
+  transition: ease-in-out 0.25s;
+
+}
+
+.user-details textarea:hover{
+  background-color: hsla(0, 3%, 26%, 0.907);
+}
+
+.submit-button{
+  color:white;
+  padding: 8px;
+  font-size:20px;
+  margin-top:50px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(30, 29, 29, 0.1);
+  backdrop-filter: blur(2.7px);
+  -webkit-backdrop-filter: blur(2.7px);
+  border: 1px solid rgba(255, 255, 255, 1);
+  transition: ease-in-out 0.25s;
+  border-width:1px;
+}
+
+.submit-button:hover{
+  background: rgba(255, 255, 255, 0.017);
+}
+
+.contact-box{
+    margin-top:50px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:70px;
+}
+
+.reach-us-box{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top:20px;
+}
+
+.reach-us-box h1{
+  font-size:2rem;
+  color:hsl(198, 70%, 40%);
+  font-weight:540;
+}
+
+.club-details{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:50px;
+}
+
+.club-logo{
+  width:64px;
+  height:86px;
+  margin-bottom:40px;
+}
+
+.club-name{
+  display:flex;
+}
+
+.first-name{
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.last-name{
+  margin-left:10px;
+  font-weight:100;
+  font-size:2rem;
+  
+}
+
+.certification{
+  font-size:10px;
+  padding-left:50px;
+}
+
+.address{
+  display:flex;
+  flex-direction: column;
+  margin-top:30px;
+  padding-top:20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.address img{
+  width:26px;
+  height:26px;
+  margin-bottom:12px;
+}
+
+.address p{
+  font-size:18px;
+  font-weight:500;
+  
+}
+
+.number{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top:30px;
+}
+
+.number h1{
+  font-size:2rem;
+  color:hsl(198, 70%, 40%);
+  font-weight:540;
+}
+
+.number p img{
+  display:inline-block
+}
+
+.number p{
+  margin-top:20px;
+  font-size:18px;
+  font-weight:500;
+}
+
+.number img{
+  width:15px;
+  height:15px;
+  margin-bottom: 10px;
+  margin-right:4px;
+  padding-right: 4px;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+    .user-details{
+      width:350px;
+    }
+  
+  .user-details{
+    padding-left:20px;
+    padding-right:20px;
+  }
+
+  .user-details input {
+    width: 100%;
+  }
+
+  .user-details textarea {
+    width:100%;
+  }
+
+  .club-details{
+    margin-top:0px;
+  }
+
+  .address p{
+    padding:10px;
+  }
+
+  .address img{
+    margin-bottom:0px;
+  }
+
+  .address p{
+    text-align: center;
+    padding:4px;
+  }
+
+  .number{
+    margin-top:50px;
+  }
+}
