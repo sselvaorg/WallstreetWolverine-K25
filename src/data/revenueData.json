@@ -1,0 +1,7 @@
+[
+    { "label": "January", "revenue": 10000, "cost": 7000 },
+    { "label": "February", "revenue": 12000, "cost": 8000 },
+    { "label": "March", "revenue": 9000, "cost": 6000 },
+    { "label": "April", "revenue": 15000, "cost": 11000 },
+    { "label": "May", "revenue": 14000, "cost": 10000 }
+]
