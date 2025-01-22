@@ -1,33 +1,25 @@
 .contact-page{
-  font-family: arial, sans-serif;
-  background-image: url('images/sample-bg.jpeg');
-  background-size:cover;
-  background-position:center;
-  
+  font-family: sans-serif;
+  padding:0;
   height:100%;
-  width:100%;  
-  margin:0;
-
-  overflow-x: hidden;
-  padding-bottom:100px;
+  height:100vh;
 }
 
-.navbar-box{
-  height:70px;
-  background-color: sandybrown;
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  z-index: -1; 
 }
 
 .contact-container{
-  
-  
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap:26px;
-  /*
-    display:flex;
-  justify-content: space-around;
-  padding-top:30px;
-  */  
+  padding-bottom: 200px;
 }
 
 @media(max-width: 768px){
@@ -46,12 +38,10 @@
   justify-content: space-around;
 }
 
-
-
 .title{
   font-size:2rem;
-  color:hsl(198, 70%, 40%);
-  font-weight:540;
+  color:white;
+  font-weight:600;
   width:100%;
   text-align: center;
 }
@@ -60,8 +50,6 @@
   display:flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(109, 154, 157, 0.651);
- 
   margin-top:10px;
   padding-top:30px;
   padding-left:70px;
@@ -69,6 +57,12 @@
   padding-bottom:40px;
   border-radius:10px;
 
+  background: rgba(25, 101, 129, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(5, 47, 62, 0.3);
 }
 
 .user-details label{
@@ -76,17 +70,17 @@
   font-weight:550;
   font-family: sans-serif;
   margin-bottom: 15px;
+  color:white;
 }
 
 .user-details input{
   color:rgb(255, 255, 255);
-  background-color: hsla(0, 5%, 32%, 0.807);
+  background-color: rgb(52, 50, 50);
   width:410px;
   height: 40px;
   border-radius: 6px;
   border:none;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
+  box-shadow: 2px 2px 5px rgb(217, 213, 213);
   outline:none;
   padding-left:8px;
   transition: ease-in-out 0.25s;
@@ -94,14 +88,13 @@
 
 
 .user-details input:hover{
-  background-color: hsla(0, 3%, 26%, 0.907);
+ box-shadow: 2px 2px 8px white;
 }
 
-.user-details textarea{
-  
-  background: rgba(38, 36, 36, 0.58);
+.user-details textarea{  
+  padding:10px;
+  background: rgb(52, 50, 50);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.8px);
   -webkit-backdrop-filter: blur(7.8px);
 
@@ -111,34 +104,36 @@
   margin-bottom:50px;
   border-radius: 6px;
   border:none;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
+  box-shadow: 2px 2px 5px rgb(217, 213, 213);
   outline:none;
   transition: ease-in-out 0.25s;
-
+  box-shadow: rgba(120, 202, 240, 0.12) 0px 2px 4px 0px, rgba(122, 208, 244, 0.32) 0px 2px 16px 0px;
 }
 
 .user-details textarea:hover{
-  background-color: hsla(0, 3%, 26%, 0.907);
+  box-shadow: 2px 2px 8px white;
 }
 
 .submit-button{
-  color:white;
+  color:rgb(255, 255, 255);
   padding: 8px;
-  font-size:20px;
+  font-size:16px;
   margin-top:50px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 5px;
-  box-shadow: 0 4px 30px rgba(30, 29, 29, 0.1);
+  background: rgba(47, 50, 52, 0.15);
+  border-radius: 8px;
+  box-shadow: 1px 1px 8px white;
+
   backdrop-filter: blur(2.7px);
-  -webkit-backdrop-filter: blur(2.7px);
-  border: 1px solid rgba(255, 255, 255, 1);
+  -webkit-backdrop-filter: blur(5px);
   transition: ease-in-out 0.25s;
-  border-width:1px;
+  
 }
 
 .submit-button:hover{
-  background: rgba(255, 255, 255, 0.017);
+  background-color:rgb(255, 255, 255);
+  color:rgba(6, 28, 42);
+  font-weight:600;
+  box-shadow: 1px 1px 8px rgb(9, 168, 247);
 }
 
 .contact-box{
@@ -155,12 +150,20 @@
   align-items: center;
   justify-content: center;
   padding-top:20px;
+  padding-right:20px;
+ 
+  background: rgba(25, 101, 129, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.4px);
+  -webkit-backdrop-filter: blur(10.4px);
+  border: 1px solid rgba(25, 101, 129, 0.3);
 }
 
 .reach-us-box h1{
   font-size:2rem;
-  color:hsl(198, 70%, 40%);
-  font-weight:540;
+  color:white;
+  font-weight:600;
 }
 
 .club-details{
@@ -172,8 +175,9 @@
 
 .club-logo{
   width:64px;
-  height:86px;
+  height:80px;
   margin-bottom:40px;
+
 }
 
 .club-name{
@@ -183,18 +187,20 @@
 .first-name{
   font-size: 2rem;
   font-weight: 600;
+  color:white;
 }
 
 .last-name{
   margin-left:10px;
   font-weight:100;
   font-size:2rem;
-  
+  color:white;
 }
 
 .certification{
   font-size:10px;
   padding-left:50px;
+  color:white;
 }
 
 .address{
@@ -210,12 +216,14 @@
   width:26px;
   height:26px;
   margin-bottom:12px;
+  background-color: rgb(2, 57, 68);
+  border-radius:20px;
 }
 
 .address p{
   font-size:18px;
   font-weight:500;
-  
+  color:white;
 }
 
 .number{
@@ -228,18 +236,24 @@
 
 .number h1{
   font-size:2rem;
-  color:hsl(198, 70%, 40%);
-  font-weight:540;
+  color:white;
+  font-weight:600;
 }
 
 .number p img{
-  display:inline-block
+  display:inline-block;
+  background-color: rgb(14, 117, 138);
+  padding-left:4px;
+  width:20px;
+  height:20px;
+  border-radius:20px;
 }
 
 .number p{
   margin-top:20px;
   font-size:18px;
   font-weight:500;
+  color:white;
 }
 
 .number img{
@@ -249,10 +263,6 @@
   margin-right:4px;
   padding-right: 4px;
 }
-
-
-
-
 
 
 @media (max-width: 768px) {

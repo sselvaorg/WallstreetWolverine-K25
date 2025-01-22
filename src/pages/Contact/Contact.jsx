@@ -3,7 +3,7 @@ import './Contact.css';
 import tlephoneImage from './images/telephone.png';
 import location from './images/location.png';
 import logo from './images/logo.jpg';
-
+import background from './images/stock1.mp4';
 
 function Contact(){
  
@@ -14,7 +14,14 @@ function Contact(){
         <h1>Navbar</h1>
       </div>
 
+
       <div className="contact-container">
+
+        <video className="video-background" autoPlay loop muted playsInline>
+        <source src={background} type="video/mp4" />
+        Your browser does not support the video tag.
+        </video>
+
         <div className="userBox">
           
           <p className="title">How Can We Help You?</p>
