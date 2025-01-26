@@ -5,6 +5,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        euroStyle: "'EuroStyle', sans-serif",
+      },
+      colors:{
+        medium:"#15394d",
+      },
+    
       keyframes :{
         movecenter1 : {
                 '0%' : {

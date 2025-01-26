@@ -1,3 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Original+Surfer&family=Special+Elite&display=swap");
+@import url("https://fonts.cdnfonts.com/css/ds-digital");
+@import url('https://fonts.googleapis.com/css2?family=Eurostile:wght@400;700&display=swap');
+
+@font-face {
+    font-family: "EuroStyle";
+    src: url("/fonts/EuroStyle-Normal.TTF") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,7 +1,16 @@
-import React, { useState } from "react";
-import { vid, wolf } from "./vid";
+import Navbar from "../../components/Navbar/Navbar";
+import { vid, wolf } from "./Components/vid";
+import { useState } from "react";
 
-const SecretDiv = ({ divStyle, mouseFunc, text, visibleFunc, visible, textStyle, distance }) => {
+const SecretDiv = ({
+  divStyle,
+  mouseFunc,
+  text,
+  visibleFunc,
+  visible,
+  textStyle,
+  distance,
+}) => {
   return (
     <div
       className={`${divStyle} absolute bottom-20 text-center z-10 w-[100px] h-[100px] flex items-center justify-center`}
@@ -34,7 +43,7 @@ export default function Home() {
       Math.pow(centerX - cursorX, 2) + Math.pow(centerY - cursorY, 2)
     );
 
-    setVisibility(distance <= d); 
+    setVisibility(distance <= d);
   };
 
   const textStyle1 =
@@ -47,7 +56,7 @@ export default function Home() {
       className="h-screen w-screen flex flex-col items-center justify-center overflow-hidden m-0"
       onMouseMove={handleMouseChange}
     >
-
+      <Navbar />
       {/* Background video */}
       <video
         src={vid}
@@ -59,11 +68,16 @@ export default function Home() {
 
       <div className="flex flex-col gap-[15px]">
         <div className="flex flex-row gap-[15px] justify-center animate-rDiv">
-          {["W", "A", "L", "L", "S", "T", "R", "E", "E", "T"].map((char, index) => (
-            <p key={index} className={index % 2 === 0 ? textStyle1 : textStyle2}>
-              {char}
-            </p>
-          ))}
+          {["W", "A", "L", "L", "S", "T", "R", "E", "E", "T"].map(
+            (char, index) => (
+              <p
+                key={index}
+                className={index % 2 === 0 ? textStyle1 : textStyle2}
+              >
+                {char}
+              </p>
+            )
+          )}
         </div>
         <div className="flex flex-row gap-[15px] justify-center">
           {["W", "O", "L", "V", "E", "R", "I", "N", "E"].map((char, index) => (
@@ -73,7 +87,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <img src={wolf} className='h-[180px] ' alt="Wolf Image" />
+      <img src={wolf} className="h-[180px] " alt="Wolf Image" />
 
       <div
         className="absolute border-[2px border-yellow-500 rounded-full pointer-events-none bg-yellow-500 opacity-45"
