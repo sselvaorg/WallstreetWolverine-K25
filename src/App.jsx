@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Market from "./pages/Market/Market";
+import StockPage from "./pages/Market/components/StockPage";
 import Profile from "./pages/Profile/Profile";
 import Instructions from "./pages/Instructions/Instructions";
 import Rules from "./pages/Rules/Rules";
@@ -13,6 +14,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/market" element={<Market />} />
+        <Route path="/stock/:id" element={<StockPage />}/>
         <Route path="/profile" element={<Profile />} />
         <Route path="/instructions" element={<Instructions />} />
         <Route path="/rules" element={<Rules />} />
