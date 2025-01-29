@@ -38,6 +38,26 @@ export default {
                 top: '0px',
               },
             },
+        movecenter4: {
+              '0%': {
+                fontSize: '160px',
+                top: '600px',
+              },
+              '100%': {
+                fontSize: '40px',
+                top: '0px',
+              },
+            },
+        movecenter5: {
+          '0%': {
+            fontSize: '160px',
+            top: '600px',
+          },
+          '100%': {
+            fontSize: '80px',
+            top: '0px',
+          },
+        },
         rDiv: {
             '0%': {
               transform: 'rotate(0deg)',
@@ -51,6 +71,8 @@ export default {
         movecenter1: 'movecenter1 2s ease-in-out',
         movecenter2: 'movecenter2 2s ease-in-out',
         movecenter3: 'movecenter3 2s ease-in-out',
+        movecenter4: 'movecenter4 2s ease-in-out',
+        movecenter5: 'movecenter5 2s ease-in-out',
         rDiv: 'rDiv 2s linear ',
       }
     },
