@@ -1,6 +1,7 @@
 import Navbar from "../../components/Navbar/Navbar";
 import { vid, wolf } from "./Components/vid";
-import { useState } from "react";
+// import { useState } from "react";
+import PropTypes from "prop-types";
 
 const SecretDiv = ({
   divStyle,
@@ -23,30 +24,30 @@ const SecretDiv = ({
 };
 
 export default function Home() {
-  const [cursorX, setCursorX] = useState(0);
-  const [cursorY, setCursorY] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isVisible1, setIsVisible1] = useState(false);
-  const [isVisible2, setIsVisible2] = useState(false);
-  const [isVisible3, setIsVisible3] = useState(false);
+  // const [cursorX, setCursorX] = useState(0);
+  // const [cursorY, setCursorY] = useState(0);
+  // const [isVisible, setIsVisible] = useState(false);
+  // const [isVisible1, setIsVisible1] = useState(false);
+  // const [isVisible2, setIsVisible2] = useState(false);
+  // const [isVisible3, setIsVisible3] = useState(false);
 
-  const handleMouseChange = (e) => {
-    setCursorX(e.clientX);
-    setCursorY(e.clientY);
-  };
+  // const handleMouseChange = (e) => {
+  //   setCursorX(e.clientX);
+  //   setCursorY(e.clientY);
+  // };
 
   const width = window.innerWidth;
 
-  const handleProximityCheck = (e, d, setVisibility) => {
-    const rect = e.target.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const distance = Math.sqrt(
-      Math.pow(centerX - cursorX, 2) + Math.pow(centerY - cursorY, 2)
-    );
+  // const handleProximityCheck = (e, d, setVisibility) => {
+  //   const rect = e.target.getBoundingClientRect();
+  //   const centerX = rect.left + rect.width / 2;
+  //   const centerY = rect.top + rect.height / 2;
+  //   const distance = Math.sqrt(
+  //     Math.pow(centerX - cursorX, 2) + Math.pow(centerY - cursorY, 2)
+  //   );
 
-    setVisibility(distance <= d);
-  };
+  //   setVisibility(distance <= d);
+  // };
 
   const textStyle1 =
     "text-[120px] max-sm:text-[40px] max-lg:text-[80px] relative font-semibold max-sm:font-bold animate-movecenter1 text-white";
@@ -55,8 +56,8 @@ export default function Home() {
 
   return (
     <div
-      className="h-screen w-full flex flex-col items-center justify-center overflow-hidden m-0 max-w-full"
-      onMouseMove={handleMouseChange}
+      className="h-screen w-full flex flex-col items-center justify-center overflow-hidden m-0 overflow-x-hidden overflow-y-auto"
+      // onMouseMove={handleMouseChange}
     >
       <div className="fixed top-0 left-0 w-full z-50">
         <Navbar />
@@ -66,10 +67,10 @@ export default function Home() {
         autoPlay
         loop
         muted
-        className="absolute top-0 left-0 w-full h-screen object-cover -z-10 m-0 "
+        className="fixed top-0 left-0 w-full h-screen object-cover -z-10 m-0 "
       ></video>
 
-      <div className="flex flex-col gap-[15px]">
+      <div className="flex flex-col gap-[15px] max-w-full">
         <div className="flex flex-row gap-[15px] max-sm:gap-[10px] justify-center animate-rDiv">
           {["W", "A", "L", "L", "S", "T", "R", "E", "E", "T"].map(
             (char, index) => (
@@ -102,18 +103,18 @@ export default function Home() {
 
       {width > 1024 && (
         <div>
-          <div
+          {/* <div
             className="absolute border-[2px] border-yellow-500 rounded-full pointer-events-none bg-yellow-500 opacity-45"
             style={{
               width: "200px",
               height: "200px",
-              left: cursorX - 100,
-              top: cursorY - 100,
+              // left: cursorX - 100,
+              // top: cursorY - 100,
               boxShadow: "0px 0px 75px 5px yellow",
             }}
-          ></div>
+          ></div> */}
 
-          <SecretDiv
+          {/* <SecretDiv
             visible={isVisible}
             visibleFunc={setIsVisible}
             mouseFunc={(e, d) => handleProximityCheck(e, d, setIsVisible)}
@@ -121,8 +122,8 @@ export default function Home() {
             text="@Ceg Tech Forum"
             textStyle="font-bold text-white text-[24px]"
             divStyle="left-[1500px] w-[300px] m-0"
-          />
-          <SecretDiv
+          /> */}
+          {/* <SecretDiv
             visible={isVisible1}
             visibleFunc={setIsVisible1}
             mouseFunc={(e, d) => handleProximityCheck(e, d, setIsVisible1)}
@@ -148,9 +149,19 @@ export default function Home() {
             text="Woo Woo"
             textStyle="font-bold text-white text-[24px]"
             divStyle="left-[200px] bottom-[50px] w-[50px] m-0"
-          />
+          /> */}
         </div>
       )}
     </div>
   );
 }
+
+SecretDiv.propTypes = {
+  divStyle: PropTypes.string,
+  mouseFunc: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  visibleFunc: PropTypes.func.isRequired,
+  visible: PropTypes.bool.isRequired,
+  textStyle: PropTypes.string,
+  distance: PropTypes.number.isRequired,
+};
