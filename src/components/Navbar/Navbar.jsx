@@ -35,14 +35,13 @@ export default function Navbar() {
           <Link
             key={link.name}
             to={link.link}
-            className="text-gray-100 hover:text-blue-300 font-medium transition-colors"
+            className="text-white hover:text-blue-300 font-medium transition-colors"
           >
             {link.name}
           </Link>
         ))}
       </div>
 
-      {/* Mobile Navigation */}
       {isHam && (
         <div className="sm:hidden absolute top-full left-0 w-full bg-dark/95 z-40 shadow-lg">
           <div className="flex flex-col items-center py-4">

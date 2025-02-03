@@ -2,9 +2,9 @@ import Navbar from "../../components/Navbar/Navbar";
 
 export default function Rules() {
   return (
-    <div className="relative min-h-screen">
-      <Navbar />
+    <div className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://png.pngtree.com/background/20230616/original/pngtree-express-transportation-service-3d-render-of-cardboard-parcel-packaging-in-brown-picture-image_3666167.jpg')] bg-cover bg-center opacity-70 -z-10"></div>
+      <Navbar />
       <section className="flex flex-col items-center py-12 px-6">
         <h1 className="text-4xl font-extrabold text-red-600 tracking-wider mb-8">
           RULES

@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./components/Market.module.css";
-import Navbar from "../../components/Navbar/Navbar";
 
 const stocks = [
   { id: "1", name: "Aquashop" },
@@ -22,20 +21,24 @@ function Market() {
 
   return (
     <div className={styles.container}>
-      <Navbar />
+      <nav className={styles.navbar}>
+        <a href="/">Home</a>
+        <a href="/market">Market</a>
+        <a href="/profile">Profile</a>
+        <a href="/instructions">Instructions</a>
+        <a href="/rules">Rules</a>
+        <a href="/contact">Contact</a>
+        <a href="/login">Login</a>
+      </nav>
 
-      {/* Page Heading */}
       <h1 className={styles.heading}>Market</h1>
 
-      {/* Content Grid */}
       <div className={styles.grid}>
-        {/* News Section */}
         <div className={styles.newsSection}>
           <h2 className={styles.sectionHeading}>News</h2>
           <div className={styles.newsBox}>-----X-----</div>
         </div>
 
-        {/* Stock List Section */}
         <div className={styles.stockList}>
           <h2 className={styles.sectionHeading}>Stocks</h2>
           {stocks.map((stock) => (

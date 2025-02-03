@@ -2,8 +2,8 @@ import Navbar from "../../components/Navbar/Navbar";
 
 export default function Profile() {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4 sm:p-6">
-
+    <div className="min-h-screen bg-sky-700 flex flex-col items-center justify-center p-4 sm:p-6">
+      <Navbar />
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-500 mb-6 sm:mb-8 tracking-wide text-center">
         PROFILE
       </h1>
@@ -11,12 +11,16 @@ export default function Profile() {
       <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
         <div className="bg-gradient-to-r from-red-300 to-blue-300 rounded-lg p-4 sm:p-6 shadow-lg w-full self-start">
           <div className="flex flex-col gap-4 sm:gap-6">
-            {["K! ID", "Name", "College", "Department", "Email"].map((label, index) => (
-              <div key={index} className="flex flex-col">
-                <span className="text-base sm:text-lg font-medium">{label}</span>
-                <hr className="border-t border-gray-600 mt-1" />
-              </div>
-            ))}
+            {["K! ID", "Name", "College", "Department", "Email"].map(
+              (label, index) => (
+                <div key={index} className="flex flex-col">
+                  <span className="text-base sm:text-lg font-medium">
+                    {label}
+                  </span>
+                  <hr className="border-t border-gray-600 mt-1" />
+                </div>
+              )
+            )}
           </div>
         </div>
 
