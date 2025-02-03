@@ -2,7 +2,7 @@ import Navbar from "../../components/Navbar/Navbar";
 
 export default function Profile() {
   return (
-    <div className="min-h-screen bg-sky-700 flex flex-col items-center justify-center p-4 sm:p-6">
+    <div className="min-h-screen bg-sky-300 flex flex-col items-center justify-center p-4 sm:p-6">
       <Navbar />
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-500 mb-6 sm:mb-8 tracking-wide text-center">
         PROFILE

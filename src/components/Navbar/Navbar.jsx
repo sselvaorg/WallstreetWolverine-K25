@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isHam, setHam] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between px-4 md:px-6 relative z-[999999] w-full top-0">
+    <nav className="flex items-center justify-between px-4 md:px-6 relative z-[999999] w-full top-0 ">
       <img src={image} alt="Logo" className="h-8 md:h-12" />
 
       <button

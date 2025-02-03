@@ -55,95 +55,102 @@ export default function Home() {
 
   return (
     <div
-      className="h-screen w-full flex flex-col items-center justify-center overflow-hidden m-0 "
+      className="h-screen w-full flex flex-col items-center justify-center overflow-hidden m-0 max-w-full"
       onMouseMove={handleMouseChange}
     >
-      <Navbar />
-      {/* Background video */}
+      <div className="fixed top-0 left-0 w-full z-50">
+        <Navbar />
+      </div>
       <video
         src={vid}
         autoPlay
         loop
         muted
-        className="absolute top-0 left-0 w-full h-screen object-cover -z-10 m-0 max-sm:max-w-[450px]"
+        className="absolute top-0 left-0 w-full h-screen object-cover -z-10 m-0 "
       ></video>
 
       <div className="flex flex-col gap-[15px]">
-
         <div className="flex flex-row gap-[15px] max-sm:gap-[10px] justify-center animate-rDiv">
-          {["W", "A", "L", "L", "S", "T", "R", "E", "E", "T"].map((char, index) => (
-            <p key={index} className={index % 2 === 0 ? textStyle1 : textStyle2}>
-              {char}
-            </p>
-          ))}
-
+          {["W", "A", "L", "L", "S", "T", "R", "E", "E", "T"].map(
+            (char, index) => (
+              <p
+                key={index}
+                className={index % 2 === 0 ? textStyle1 : textStyle2}
+              >
+                {char}
+              </p>
+            )
+          )}
         </div>
         <div className="flex flex-row gap-[15px] max-sm:gap-[10px] justify-center">
           {["W", "O", "L", "V", "E", "R", "I", "N", "E"].map((char, index) => (
-            <p key={index} className={`${textStyle1} animate-movecenter3 max-sm:animate-movecenter4 max-lg:animate-movecenter5`}>
+            <p
+              key={index}
+              className={`${textStyle1} animate-movecenter3 max-sm:animate-movecenter4 max-lg:animate-movecenter5`}
+            >
               {char}
             </p>
           ))}
         </div>
       </div>
 
-      <img src={wolf} className='h-[180px] max-sm:h-[140px] mt-[20px]' alt="Wolf Image" />
+      <img
+        src={wolf}
+        className="h-[180px] max-sm:h-[140px] mt-[20px]"
+        alt="Wolf Image"
+      />
 
-     
-  {width > 1024 &&
-      <div>
+      {width > 1024 && (
+        <div>
+          <div
+            className="absolute border-[2px] border-yellow-500 rounded-full pointer-events-none bg-yellow-500 opacity-45"
+            style={{
+              width: "200px",
+              height: "200px",
+              left: cursorX - 100,
+              top: cursorY - 100,
+              boxShadow: "0px 0px 75px 5px yellow",
+            }}
+          ></div>
 
-
-      <div
-        className="absolute border-[2px] border-yellow-500 rounded-full pointer-events-none bg-yellow-500 opacity-45"
-        style={{
-          width: "200px",
-          height: "200px",
-          left: cursorX - 100,
-          top: cursorY - 100,
-          boxShadow: "0px 0px 75px 5px yellow",
-        }}
-      ></div>
-
-        <SecretDiv
-          visible={isVisible}
-          visibleFunc={setIsVisible}
-          mouseFunc={(e, d) => handleProximityCheck(e, d, setIsVisible)}
-          distance={200}
-          text="@Ceg Tech Forum"
-          textStyle="font-bold text-white text-[24px]"
-          divStyle="left-[1500px] w-[300px] m-0"
-        />
-        <SecretDiv
-          visible={isVisible1}
-          visibleFunc={setIsVisible1}
-          mouseFunc={(e, d) => handleProximityCheck(e, d, setIsVisible1)}
-          distance={100}
-          text="Get Your Stock Details Faster"
-          textStyle="font-bold text-white text-[24px]"
-          divStyle="left-[50px] bottom-[800px] w-[100px] m-0"
-        />
-        <SecretDiv
-          visible={isVisible2}
-          visibleFunc={setIsVisible2}
-          mouseFunc={(e, d) => handleProximityCheck(e, d, setIsVisible2)}
-          distance={100}
-          text="Buy now sell tomorrow"
-          textStyle="font-bold text-white text-[24px]"
-          divStyle="left-[1200px] bottom-[800px] w-[100px] m-0"
-        />
-        <SecretDiv
-          visible={isVisible3}
-          visibleFunc={setIsVisible3}
-          mouseFunc={(e, d) => handleProximityCheck(e, d, setIsVisible3)}
-          distance={100}
-          text="Woo Woo"
-          textStyle="font-bold text-white text-[24px]"
-          divStyle="left-[200px] bottom-[50px] w-[50px] m-0"
-        />
-      </div>
-  }
-
+          <SecretDiv
+            visible={isVisible}
+            visibleFunc={setIsVisible}
+            mouseFunc={(e, d) => handleProximityCheck(e, d, setIsVisible)}
+            distance={200}
+            text="@Ceg Tech Forum"
+            textStyle="font-bold text-white text-[24px]"
+            divStyle="left-[1500px] w-[300px] m-0"
+          />
+          <SecretDiv
+            visible={isVisible1}
+            visibleFunc={setIsVisible1}
+            mouseFunc={(e, d) => handleProximityCheck(e, d, setIsVisible1)}
+            distance={100}
+            text="Get Your Stock Details Faster"
+            textStyle="font-bold text-white text-[24px]"
+            divStyle="left-[50px] bottom-[800px] w-[100px] m-0"
+          />
+          <SecretDiv
+            visible={isVisible2}
+            visibleFunc={setIsVisible2}
+            mouseFunc={(e, d) => handleProximityCheck(e, d, setIsVisible2)}
+            distance={100}
+            text="Buy now sell tomorrow"
+            textStyle="font-bold text-white text-[24px]"
+            divStyle="left-[1200px] bottom-[800px] w-[100px] m-0"
+          />
+          <SecretDiv
+            visible={isVisible3}
+            visibleFunc={setIsVisible3}
+            mouseFunc={(e, d) => handleProximityCheck(e, d, setIsVisible3)}
+            distance={100}
+            text="Woo Woo"
+            textStyle="font-bold text-white text-[24px]"
+            divStyle="left-[200px] bottom-[50px] w-[50px] m-0"
+          />
+        </div>
+      )}
     </div>
   );
 }
