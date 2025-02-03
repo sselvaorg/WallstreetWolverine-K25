@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./components/Market.module.css";
+import Navbar from "../../components/Navbar/Navbar";
 
 const stocks = [
   { id: "1", name: "Aquashop" },
@@ -21,15 +22,9 @@ function Market() {
 
   return (
     <div className={styles.container}>
-      <nav className={styles.navbar}>
-        <a href="/">Home</a>
-        <a href="/market">Market</a>
-        <a href="/profile">Profile</a>
-        <a href="/instructions">Instructions</a>
-        <a href="/rules">Rules</a>
-        <a href="/contact">Contact</a>
-        <a href="/login">Login</a>
-      </nav>
+      <div className="w-full fixed left-0">
+        <Navbar />
+      </div>
 
       <h1 className={styles.heading}>Market</h1>
 
