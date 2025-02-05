@@ -10,100 +10,59 @@ export default function Rules() {
           RULES
         </h1>
         <div className="bg-gradient-to-b from-red-300 to-blue-300 bg-opacity-90 p-6 rounded-lg shadow-md max-w-6xl max-h-[500px] overflow-y-scroll">
-          <ul className="space-y-7 text-lg">
-            <li className="flex items-center space-x-2">
+         <ul className="space-y-7 text-lg">
+          <li className="flex items-center space-x-2">
               <span className="text-green-500 font-bold">▲</span>
-              <p>
-                An initial capital of 1,00,000 of virtual credit will be
-                provided to trade and you can trade from 09:00 A.M to 04:00
-                P.M(IST) in a day.
-              </p>
+              <p>Every hour there will be 4 headlines with respect to 4 different companies, 
+and the price value will be affected exactly 1 hour (buffer time) after these 
+headlines. </p>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-red-500 font-bold">&#9660;</span>
-              <p>
-                To enable the sell option for stock, at least 1 stock of its own
-                kind must be bought initially.
-              </p>
+              <p>The market opens at 4 pm and closes at 12 am.</p>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-green-500 font-bold">▲</span>
-              <p>
-                The stock statistics are subject to change in regular intervals
-                (30 mins).
-              </p>
+              <p>This is a 2-day event, the first day will have the first headline about the 24 
+              companies and the 2nd day will have the next set of headlines.</p>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-red-500 font-bold">&#9660;</span>
-              <p>
-                The Stock value updates every 30mins throughout the event
-                session.
-              </p>
+              <p>Initially each user must be given 1,00,000 kuros (imaginary kuros) and if a 
+user buys something and sells it for a profit only the amount for which he 
+purchased the stock will be returned to his balance and the profit will be 
+added to a separate column which will not be visible for the user until the 
+end of the event and if he makes a loss, the user will be given the entire 
+selling amount(i,e if they buy a share for 500 and the value drops to 400 after 
+the second deadline, he made a loss, now he sells it, now update the balance 
+by adding the 400).</p>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-green-500 font-bold">▲</span>
-              <p>Newsfeed updates 5mins before the graph changes.</p>
+              <p>So, on the first day, participants can buy stocks as soon as the headline 
+releases or after the 1hr buffer time, but on the second day, after the same 
+company's 2nd headline gets published, if they want to sell the shares, they 
+shall sell it, but the updated balance will be reflected only after the buffer 
+time (based on rule 4). If they sell it within the buffer time, then the 1st
+headline’s value will be credited to the player’s account & they won’t be 
+allowed to buy the same stock after selling it.</p>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-red-500 font-bold">&#9660;</span>
-              <p>
-                The Buy/sell button will be enabled only for 20mins after the
-                graph updates.
-              </p>
+              <p>Give a description as to why you buy/sell a stock, so that the admin can fairly 
+              assess and declare the winner in case of a tight competition</p>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-green-500 font-bold">▲</span>
-              <p>
-                The trading for a particular stock value can only be done within
-                the time interval before the graph updates and changes to a new
-                value.
-              </p>
+              <p>Participants can start playing anytime during the 2-day duration.</p>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-red-500 font-bold">&#9660;</span>
-              <p>
-                Once a stock is bought/sold, it cannot be reverted back within
-                the interval. Choose wisely!
-              </p>
+              <p>The event ends on the same time for all participants on the second day.</p>
             </li>
             <li className="flex items-center space-x-2">
               <span className="text-green-500 font-bold">▲</span>
-              <p>
-                Any player without a valid K! Id or invalid details can be
-                disqualified.
-              </p>
-            </li>
-            <li className="flex items-center space-x-2">
-              <span className="text-red-500 font-bold">&#9660;</span>
-              <p>
-                At the end of the event, the player with the highest total
-                assets (credit holding with healthy trades) across the series
-                will be declared the winner.
-              </p>
-            </li>
-            <li className="flex items-center space-x-2">
-              <span className="text-green-500 font-bold">▲</span>
-              <p>
-                For any trade missed during the session, it may/may not affect
-                the end result and can be continued from the current interval.
-              </p>
-            </li>
-            <li className="flex items-center space-x-2">
-              <span className="text-red-500 font-bold">&#9660;</span>
-              <p>
-                Participants should strictly adhere to time constraints. No
-                extra time will be given under any circumstances.
-              </p>
-            </li>
-            <li className="flex items-center space-x-2">
-              <span className="text-green-500 ">▲</span>
-              <p className=" font-euroStyle">
-                Any malpractice or misbehavior will lead to disqualification.
-              </p>
-            </li>
-            <li className="flex items-center space-x-2">
-              <span className="text-red-500 font-bold">&#9660;</span>
-              <p>Organizers decision is final.</p>
+              <p>All decisions made by the organizers are final.</p>
             </li>
           </ul>
         </div>
