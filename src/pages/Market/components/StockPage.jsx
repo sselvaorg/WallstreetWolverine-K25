@@ -20,6 +20,7 @@ function StockPage() {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [stockCount, setStockCount] = useState(1);
+  const [desc,setDesc] = useState("");
 
   if (!stock) {
     return <h2>Stock not found</h2>;
@@ -66,7 +67,7 @@ function StockPage() {
             </button>
             <button
               className={`${styles.button} ${styles.historyButton}`}
-              onClick={() => navigate(`/transactions/${id}`)}
+              onClick={() => navigate(`/history`)}
             >
               History
             </button>
@@ -97,6 +98,15 @@ function StockPage() {
               onChange={(e) => setStockCount(e.target.value)}
               className="border p-2 rounded w-full mt-1"
             />
+          </label>
+          <label className="block mt-2">
+            Description:
+            <input type="text" 
+            value = {desc}
+            placeholder="Enter your Description"
+            onChange={(e)=>setDesc(e.target.value)}
+            className="border p-2 rounded w-full mt-1"
+            required/>
           </label>
           <div className="mt-4 flex justify-center">
             <button className="px-4 py-2 bg-blue-600 text-white rounded">
