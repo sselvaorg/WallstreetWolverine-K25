@@ -3,15 +3,33 @@ import styles from "./components/Market.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 
 const stocks = [
-  { id: "1", name: "Aquashop" },
-  { id: "2", name: "RazerElectronics" },
-  { id: "3", name: "BVInfra" },
-  { id: "4", name: "GoalEnterprise" },
-  { id: "5", name: "MedPharma" },
-  { id: "6", name: "Paradigm" },
-  { id: "7", name: "ViFinance" },
-  { id: "8", name: "ForgeTech" },
+  { id: "1", name: "QuantumCoreSystems" },
+  { id: "2", name: "NeonByteTechnologies" },
+  { id: "3", name: "HyperNovaSystems" },
+  { id: "4", name: "SkyNetRobotics" },
+  { id: "5", name: "TitanSportswear" },
+  { id: "6", name: "ProBallEquipment" },
+  { id: "7", name: "StrikeForceSports" },
+  { id: "8", name: "ZenithMotors" },
+  { id: "9", name: "OrionAutoTech" },
+  { id: "10", name: "VoltEdgeMotors" },
+  { id: "11", name: "TitanXAutomobiles" },
+  { id: "12", name: "StellarBank" },
+  { id: "13", name: "EverTrustFinancial" },
+  { id: "14", name: "NovaCapitalHoldings" },
+  { id: "15", name: "QuantumPay" },
+  { id: "16", name: "SwiftCart" },
+  { id: "17", name: "NeoWearFashion" },
+  { id: "18", name: "HorizonMart" },
+  { id: "19", name: "BuySmartRetail" },
+  { id: "20", name: "BioVantaPharmaceuticals" },
+  { id: "21", name: "MedexGenLabs" },
+  { id: "22", name: "NeuroSynBiotech" },
+  { id: "23", name: "GenovaHealth" },
+  { id: "24", name: "HorizonTechInnovations" }
 ];
+
+
 
 function Market() {
   const navigate = useNavigate();
