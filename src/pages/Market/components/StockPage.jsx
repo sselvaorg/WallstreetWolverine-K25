@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate,useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./StockPage.module.css";
 import PropTypes from "prop-types";
 import { stocks } from "../../../constants/market";
@@ -16,13 +16,37 @@ function StockPage() {
   const [stockCount, setStockCount] = useState(1);
   const [isBuying, setIsBuying] = useState(true);
   const [desc, setDesc] = useState("");
-  //console.log(stock);
+
   if (!stock) {
     return <h2>Stock not found</h2>;
   }
 
+  const headline1Time = new Date(stock.headline1);
+  const bufferEnd1Time = new Date(stock.bufferEnd1);
+  const headline2Time = new Date(stock.headline2);
+  const bufferEnd2Time = new Date(stock.bufferEnd2);
+
+  let buyPrice = null;
+  let sellPrice = null;
+  let canBuy = false;
+  let canSell = false;
+
+  if (currentTime >= headline1Time && currentTime < bufferEnd1Time) {
+    buyPrice = stock.prices[0];
+    canBuy = true;
+  } else if (currentTime >= bufferEnd1Time && currentTime < headline2Time) {
+    buyPrice = stock.prices[1];
+    canBuy = true;
+  }
+  if (currentTime >= headline2Time && currentTime < bufferEnd2Time) {
+    sellPrice = stock.prices[1];
+    canSell = true;
+  } else if (currentTime >= bufferEnd2Time) {
+    sellPrice = stock.prices[2];
+    canSell = true;
+  }
+
   const handleBuySellClick = (buying) => {
-    console.log(stock.prices);
     setIsBuying(buying);
     setIsModalOpen(true);
   };
@@ -33,23 +57,34 @@ function StockPage() {
 
   const handleTransaction = async (e) => {
     e.preventDefault();
+    const price = isBuying ? buyPrice : sellPrice;
+    if (!price) {
+      alert(`Transaction not allowed at this time.`);
+      return;
+    }
+
     const url = isBuying
-      ? `http://localhost:5000/buyStock/${name}/${stock.prices[0]}/${stockCount}`
-      : `http://localhost:5000/sellStock/${name}/${stock.prices[0]}/${stockCount}`;
-  
+      ? `http://localhost:5000/buyStock/${name}/${price}/${stockCount}`
+      : `http://localhost:5000/sellStock/${name}/${price}/${stockCount}`;
+
     try {
       const response = await axios.get(url, {
         headers: {
           Authorization: `${localStorage.getItem("token")}`,
         },
       });
-      alert(`Stock has been ${isBuying ? "bought" : "sold"}`);
+      alert(`Stock has been ${isBuying ? "bought" : "sold"} at $${price}`);
     } catch (error) {
-      console.error(`Can't ${isBuying ? "buy" : "sell"} the stock:`, error.response?.data?.message || error.message);
-      alert(error.response?.data?.message || `Stock ${isBuying ? "purchase" : "sale"} failed. Please try again.`);
+      console.error(
+        `Can't ${isBuying ? "buy" : "sell"} the stock:`,
+        error.response?.data?.message || error.message
+      );
+      alert(
+        error.response?.data?.message ||
+          `Stock ${isBuying ? "purchase" : "sale"} failed. Please try again.`
+      );
     }
   };
-  
 
   return (
     <div className={styles.container}>
@@ -59,29 +94,28 @@ function StockPage() {
           <h1 className={styles.mainTitle}>Market</h1>
           <div className={styles.chartContainer}>
             <h2 className="stock-name">{stock.name}</h2>
-            <div className={styles.chartContainer}>
-            <div className="text-green-300">
-              {stock.description}
-            </div>
+            <div className="text-green-300">{stock.description}</div>
           </div>
-          </div>
-          
 
           <div>
             <button
               className={`${styles.button} ${styles.buyButton}`}
               onClick={() => handleBuySellClick(true)}
-              disabled={currentTime < new Date(stock.headline1)}
+              disabled={!canBuy}
+              title={!canBuy ? "Buying not available at this time" : ""}
             >
-              Buy
+              Buy {canBuy ? "" : "🚫"}
             </button>
+
             <button
               className={`${styles.button} ${styles.sellButton}`}
               onClick={() => handleBuySellClick(false)}
-              disabled={currentTime < new Date(stock.headline2)}
+              disabled={!canSell}
+              title={!canSell ? "Selling not available at this time" : ""}
             >
-              Sell
+              Sell {canSell ? `($${sellPrice})` : "🚫"}
             </button>
+
             <button
               className={`${styles.button} ${styles.historyButton}`}
               onClick={() => navigate(`/history`)}
@@ -94,6 +128,13 @@ function StockPage() {
         <div className={styles.newsBox}>
           <Box title="News">
             <p>This is the latest news about {stock.name}.</p>
+            {currentTime >= new Date(stock.headline1) && (
+              <p className="text-blue-500 font-semibold">{stock.news1}</p>
+            )}
+            {currentTime >= new Date(stock.headline2) && (
+              <p className="text-red-500 font-semibold">{stock.news2}</p>
+            )}
+
             <p>More updates will be shown here.</p>
           </Box>
         </div>
@@ -101,9 +142,11 @@ function StockPage() {
 
       {isModalOpen && (
         <Modal onClose={handleCloseModal}>
-          <h2 className="text-xl font-bold mb-4">Stock Purchase Details</h2>
+          <h2 className="text-xl font-bold mb-4">
+            Stock {isBuying ? "Purchase" : "Sale"} Details
+          </h2>
           <p>Stock Name: {stock.name}</p>
-          <p>Price per Stock: ${stock.prices[0]}</p>
+          <p>Price per Stock: ${isBuying ? buyPrice : sellPrice}</p>
           <p>Time: {new Date().toLocaleTimeString()}</p>
           <label className="block mt-2">
             No. of Stocks:
@@ -127,7 +170,10 @@ function StockPage() {
             />
           </label>
           <div className="mt-4 flex justify-center">
-            <button className="px-4 py-2 bg-blue-600 text-white rounded" onClick={handleTransaction}>
+            <button
+              className="px-4 py-2 bg-blue-600 text-white rounded"
+              onClick={handleTransaction}
+            >
               Proceed
             </button>
           </div>
@@ -165,11 +211,11 @@ function Box({ title, children }) {
 export default StockPage;
 
 Modal.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
 Box.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
 };

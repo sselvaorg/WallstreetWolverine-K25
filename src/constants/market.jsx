@@ -6,6 +6,9 @@ export const stocks = [
     headline2: "2025-02-12T14:00:00+05:30",
     bufferEnd1: "2025-02-11T15:00:00+05:30",
     bufferEnd2: "2025-02-12T15:00:00+05:30",
+    news1:
+      "QuantumCoreSystems announces breakthrough in quantum chip efficiency.",
+    news2: "Major funding secured for next-gen quantum computing research.",
   },
   {
     name: "NeonByteTechnologies",
@@ -14,6 +17,8 @@ export const stocks = [
     headline2: "2025-02-12T14:00:00+05:30",
     bufferEnd1: "2025-02-11T15:00:00+05:30",
     bufferEnd2: "2025-02-12T15:00:00+05:30",
+    news1: "NeonByteTechnologies partners with AI firms for smart automation.",
+    news2: "Leaked reports suggest NeonByte working on an AI-powered OS.",
   },
   {
     name: "HyperNovaSystems",
@@ -22,16 +27,19 @@ export const stocks = [
     headline2: "2025-02-12T14:00:00+05:30",
     bufferEnd1: "2025-02-11T15:00:00+05:30",
     bufferEnd2: "2025-02-12T15:00:00+05:30",
+    news1: "HyperNova launches fastest cloud servers in the industry.",
+    news2: "New cyberattack exposes security flaws in HyperNova’s network.",
   },
   {
     name: "SkyNetRobotics",
     prices: [450, 504.0, 400.0],
     headline1: "2025-02-11T22:00:00+05:30",
     headline2: "2025-02-12T14:00:00+05:30",
-    bufferEnd1: "2025-02-11T22:10:00+05:30",
+    bufferEnd1: "2025-02-11T23:00:00+05:30",
     bufferEnd2: "2025-02-12T15:00:00+05:30",
+    news1: "SkyNetRobotics introduces AI-powered autonomous delivery robots.",
+    news2: "Reports claim SkyNet’s new drone violated airspace regulations.",
   },
-
   {
     name: "TitanSportswear",
     prices: [550, 467.5, 504.9],
@@ -39,6 +47,8 @@ export const stocks = [
     headline2: "2025-02-12T15:00:00+05:30",
     bufferEnd1: "2025-02-11T16:00:00+05:30",
     bufferEnd2: "2025-02-12T16:00:00+05:30",
+    news1: "TitanSportswear signs a multi-million deal with top athletes.",
+    news2: "Customer complaints surge over Titan’s latest smart running shoes.",
   },
   {
     name: "ProBallEquipment",
@@ -47,6 +57,8 @@ export const stocks = [
     headline2: "2025-02-12T15:00:00+05:30",
     bufferEnd1: "2025-02-11T16:00:00+05:30",
     bufferEnd2: "2025-02-12T16:00:00+05:30",
+    news1: "ProBallEquipment secures contract to supply gear for the Olympics.",
+    news2: "Recent safety test failures raise concerns over ProBall helmets.",
   },
   {
     name: "StrikeForceSports",
@@ -55,6 +67,8 @@ export const stocks = [
     headline2: "2025-02-12T15:00:00+05:30",
     bufferEnd1: "2025-02-11T16:00:00+05:30",
     bufferEnd2: "2025-02-12T16:00:00+05:30",
+    news1: "StrikeForceSports launches advanced protective gear for athletes.",
+    news2: "Court ruling fines StrikeForceSports over unfair labor practices.",
   },
   {
     name: "ZenithMotors",
@@ -63,8 +77,9 @@ export const stocks = [
     headline2: "2025-02-12T15:00:00+05:30",
     bufferEnd1: "2025-02-11T16:00:00+05:30",
     bufferEnd2: "2025-02-12T16:00:00+05:30",
+    news1: "ZenithMotors unveils self-driving electric truck.",
+    news2: "Zenith recalls 10,000 vehicles over battery overheating issues.",
   },
-
   {
     name: "OrionAutoTech",
     prices: [850, 1062.5, 1168.75],
@@ -72,6 +87,8 @@ export const stocks = [
     headline2: "2025-02-12T16:00:00+05:30",
     bufferEnd1: "2025-02-11T17:00:00+05:30",
     bufferEnd2: "2025-02-12T17:00:00+05:30",
+    news1: "OrionAutoTech unveils self-driving truck prototype.",
+    news2: "OrionAutoTech recalls 5,000 units over faulty braking system.",
   },
   {
     name: "VoltEdgeMotors",
@@ -80,6 +97,8 @@ export const stocks = [
     headline2: "2025-02-12T16:00:00+05:30",
     bufferEnd1: "2025-02-11T17:00:00+05:30",
     bufferEnd2: "2025-02-12T17:00:00+05:30",
+    news1: "VoltEdge reveals new electric car with record-breaking range.",
+    news2: "Major safety recall issued for VoltEdge’s latest vehicle model.",
   },
   {
     name: "TitanXAutomobiles",
@@ -88,6 +107,8 @@ export const stocks = [
     headline2: "2025-02-12T16:00:00+05:30",
     bufferEnd1: "2025-02-11T17:00:00+05:30",
     bufferEnd2: "2025-02-12T17:00:00+05:30",
+    news1: "TitanXAutomobiles invests in AI-driven car safety systems.",
+    news2: "Rising costs force TitanXAutomobiles to cut production by 20%.",
   },
   {
     name: "StellarBank",
@@ -96,6 +117,8 @@ export const stocks = [
     headline2: "2025-02-12T16:00:00+05:30",
     bufferEnd1: "2025-02-11T17:00:00+05:30",
     bufferEnd2: "2025-02-12T17:00:00+05:30",
+    news1: "StellarBank reports record profits amidst digital transformation.",
+    news2: "Regulators fine StellarBank for data privacy violations.",
   },
   {
     name: "EverTrustFinancial",
@@ -104,6 +127,10 @@ export const stocks = [
     headline2: "2025-02-12T17:00:00+05:30",
     bufferEnd1: "2025-02-11T18:00:00+05:30",
     bufferEnd2: "2025-02-12T18:00:00+05:30",
+    news1:
+      "EverTrustFinancial reports record Q4 profits, surpassing expectations.",
+    news2:
+      "Regulators launch investigation into EverTrust's lending practices.",
   },
   {
     name: "NovaCapitalHoldings",
@@ -112,6 +139,9 @@ export const stocks = [
     headline2: "2025-02-12T17:00:00+05:30",
     bufferEnd1: "2025-02-11T18:00:00+05:30",
     bufferEnd2: "2025-02-12T18:00:00+05:30",
+    news1: "NovaCapitalHoldings secures $1B investment from global partners.",
+    news2:
+      "Stock crashes as CEO resigns amid financial mismanagement allegations.",
   },
   {
     name: "QuantumPay",
@@ -120,6 +150,8 @@ export const stocks = [
     headline2: "2025-02-12T17:00:00+05:30",
     bufferEnd1: "2025-02-11T18:00:00+05:30",
     bufferEnd2: "2025-02-12T18:00:00+05:30",
+    news1: "QuantumPay partners with major retailers for seamless payments.",
+    news2: "Users report security vulnerability in QuantumPay mobile app.",
   },
   {
     name: "SwiftCart",
@@ -128,8 +160,9 @@ export const stocks = [
     headline2: "2025-02-12T17:00:00+05:30",
     bufferEnd1: "2025-02-11T18:00:00+05:30",
     bufferEnd2: "2025-02-12T18:00:00+05:30",
+    news1: "SwiftCart introduces AI-powered personalized shopping assistant.",
+    news2: "Technical outage causes delays in SwiftCart deliveries nationwide.",
   },
-
   {
     name: "NeoWearFashion",
     prices: [400, 440.0, 488.4],
@@ -137,6 +170,8 @@ export const stocks = [
     headline2: "2025-02-12T18:00:00+05:30",
     bufferEnd1: "2025-02-11T19:00:00+05:30",
     bufferEnd2: "2025-02-12T19:00:00+05:30",
+    news1: "NeoWearFashion launches eco-friendly clothing line.",
+    news2: "Reports claim NeoWear’s latest fabric contains harmful chemicals.",
   },
   {
     name: "HorizonMart",
@@ -145,6 +180,8 @@ export const stocks = [
     headline2: "2025-02-12T18:00:00+05:30",
     bufferEnd1: "2025-02-11T19:00:00+05:30",
     bufferEnd2: "2025-02-12T19:00:00+05:30",
+    news1: "HorizonMart expands operations to 10 new cities.",
+    news2: "Data breach exposes customer details at HorizonMart.",
   },
   {
     name: "BuySmartRetail",
@@ -153,6 +190,8 @@ export const stocks = [
     headline2: "2025-02-12T18:00:00+05:30",
     bufferEnd1: "2025-02-11T19:00:00+05:30",
     bufferEnd2: "2025-02-12T19:00:00+05:30",
+    news1: "BuySmartRetail introduces drone delivery in metro cities.",
+    news2: "Reports show BuySmartRetail facing losses due to poor logistics.",
   },
   {
     name: "BioVantaPharmaceuticals",
@@ -161,8 +200,9 @@ export const stocks = [
     headline2: "2025-02-12T18:00:00+05:30",
     bufferEnd1: "2025-02-11T19:00:00+05:30",
     bufferEnd2: "2025-02-12T19:00:00+05:30",
+    news1: "BioVantaPharmaceuticals develops breakthrough cancer treatment.",
+    news2: "FDA halts BioVanta's new drug trials due to side effect concerns.",
   },
-
   {
     name: "MedexGenLabs",
     prices: [1100, 935.0, 1047.2],
@@ -170,6 +210,8 @@ export const stocks = [
     headline2: "2025-02-12T19:00:00+05:30",
     bufferEnd1: "2025-02-11T20:00:00+05:30",
     bufferEnd2: "2025-02-12T20:00:00+05:30",
+    news1: "MedexGenLabs discovers potential cure for rare genetic disorder.",
+    news2: "Regulators investigate MedexGenLabs for patent infringement.",
   },
   {
     name: "NeuroSynBiotech",
@@ -178,6 +220,8 @@ export const stocks = [
     headline2: "2025-02-12T19:00:00+05:30",
     bufferEnd1: "2025-02-11T20:00:00+05:30",
     bufferEnd2: "2025-02-12T20:00:00+05:30",
+    news1: "NeuroSynBiotech announces progress in Alzheimer's research.",
+    news2: "Concerns rise as NeuroSynBiotech's drug fails latest trials.",
   },
   {
     name: "GenovaHealth",
@@ -186,6 +230,9 @@ export const stocks = [
     headline2: "2025-02-12T19:00:00+05:30",
     bufferEnd1: "2025-02-11T20:00:00+05:30",
     bufferEnd2: "2025-02-12T20:00:00+05:30",
+    news1:
+      "GenovaHealth secures $500M government contract for vaccine production.",
+    news2: "GenovaHealth faces backlash over rising drug prices.",
   },
   {
     name: "HorizonTechInnovations",
@@ -194,6 +241,7 @@ export const stocks = [
     headline2: "2025-02-12T19:00:00+05:30",
     bufferEnd1: "2025-02-11T20:00:00+05:30",
     bufferEnd2: "2025-02-12T20:00:00+05:30",
+    news1: "HorizonTechInnovations patents revolutionary battery technology.",
+    news2: "HorizonTech faces lawsuits over false advertising claims.",
   },
 ];
-

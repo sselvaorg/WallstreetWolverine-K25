@@ -20,15 +20,23 @@ function Market() {
       <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg h-fit">
           <h2 className="text-2xl font-semibold mb-4">News</h2>
-          <div className="h-64 bg-gray-700 flex items-center justify-center rounded-lg">
+          <div className="bg-gray-700 flex flex-col h-fit p-5 text-sm text-justify items-center justify-center rounded-lg">
             {stocks.map((stock) => {
-              const headlineTime = new Date(stock.headline1);
               return (
-                currentTime >= headlineTime && (
-                  <div key={stock.name} className="news-item">
-                    <strong>{stock.name}</strong> - Breaking News!
-                  </div>
-                )
+                <div
+                  key={stock.name}
+                  className="mb-4 p-3 bg-gray-800 rounded-lg w-full text-center"
+                >
+                  <h3 className="text-sm font-bold text-white">{stock.name}</h3>
+
+                  {currentTime >= new Date(stock.headline1) && (
+                    <p className="text-blue-500 text-justify text-sm">{stock.news1}</p>
+                  )}
+
+                  {currentTime >= new Date(stock.headline2) && (
+                    <p className="text-red-500 text-justify text-sm">{stock.news2}</p>
+                  )}
+                </div>
               );
             })}
           </div>
