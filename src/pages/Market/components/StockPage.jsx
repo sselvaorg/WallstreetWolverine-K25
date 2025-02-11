@@ -13,13 +13,15 @@ function StockPage() {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [stockCount, setStockCount] = useState(1);
+  const [isBuying, setIsBuying] = useState(true);
   const [desc, setDesc] = useState("");
 
   if (!stock) {
     return <h2>Stock not found</h2>;
   }
 
-  const handleBuySellClick = () => {
+  const handleBuySellClick = (buying) => {
+    setIsBuying(buying);
     setIsModalOpen(true);
   };
 
@@ -27,29 +29,25 @@ function StockPage() {
     setIsModalOpen(false);
   };
 
-  const handleBuy = async (e) => {
+  const handleTransaction = async (e) => {
     e.preventDefault();
-
-    try{
-      const response = await axios.post("http://localhost:5000/:column/:value/:nos");
-      alert("Stock has been bought");
-      localStorage.setItem("token", response.data.token);
+    const url = isBuying
+      ? `http://localhost:5000/buyStock/${name}/${stock.prices[0]}/${stockCount}`
+      : `http://localhost:5000/sellStock/${name}/${stock.prices[0]}/${stockCount}`;
   
-    } catch(error) {
-      console.error("Can't Buy The Stock :",error.response?.data?.message || error.message);
-      alert(error.response?.data?.message || "Stock Purchase Failed. Please try again.");
+    try {
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `${localStorage.getItem("token")}`,
+        },
+      });
+      alert(`Stock has been ${isBuying ? "bought" : "sold"}`);
+    } catch (error) {
+      console.error(`Can't ${isBuying ? "buy" : "sell"} the stock:`, error.response?.data?.message || error.message);
+      alert(error.response?.data?.message || `Stock ${isBuying ? "purchase" : "sale"} failed. Please try again.`);
     }
-  }
-
-  const handleSell = async (e) => {
-    e.preventDefault();
-    try{
-
-    } catch(error) {
-      console.log("Can't Sell the Stock : ",error.response?.data?.message || error.message);
-      alert(error.response?.data?.message || "Stock Purchase Failed. Please try again.");
-    }
-  }
+  };
+  
 
   return (
     <div className={styles.container}>
@@ -70,13 +68,13 @@ function StockPage() {
           <div>
             <button
               className={`${styles.button} ${styles.buyButton}`}
-              onClick={handleBuySellClick}
+              onClick={() => handleBuySellClick(true)}
             >
               Buy
             </button>
             <button
               className={`${styles.button} ${styles.sellButton}`}
-              onClick={handleBuySellClick}
+              onClick={() => handleBuySellClick(false)}
             >
               Sell
             </button>
@@ -125,7 +123,7 @@ function StockPage() {
             />
           </label>
           <div className="mt-4 flex justify-center">
-            <button className="px-4 py-2 bg-blue-600 text-white rounded">
+            <button className="px-4 py-2 bg-blue-600 text-white rounded" onClick={handleTransaction}>
               Proceed
             </button>
           </div>
