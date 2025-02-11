@@ -1,22 +1,12 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./StockPage.module.css";
 import PropTypes from "prop-types";
+import { stocks } from "../../../constants/market";
 import Navbar from "../../../components/Navbar/Navbar";
-const stockDetails = {
-  1: { name: "Aquashop", price: 120.5 },
-  2: { name: "RazerElectronics", price: 98.75 },
-  3: { name: "BVInfra", price: 185.2 },
-  4: { name: "GoalEnterprise", price: 152.9 },
-  5: { name: "MedPharma", price: 211.3 },
-  6: { name: "Paradigm", price: 140.6 },
-  7: { name: "ViFinance", price: 176.4 },
-  8: { name: "ForgeTech", price: 200.9 },
-};
 
 function StockPage() {
-  const { id } = useParams();
-  const stock = stockDetails[id];
+  const stock = stocks;
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [stockCount, setStockCount] = useState(1);
@@ -35,94 +25,80 @@ function StockPage() {
   };
 
   return (
-    <>
-      <div className="w-full fixed left-0 mb-4">
-        <Navbar />
-      </div>
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <div className={styles.charts}>
-            <h1 className={styles.mainTitle}>Market</h1>
-            <div className={styles.chartContainer}>
-              <h2 className="stock-name">{stock.name}</h2>
-              {/* <GridItem>
-              <LineChart />
-            </GridItem> */}
-            </div>
-
-            <div className={styles.chartContainer}>
-              {/* <GridItem>
-              <LineChart1 />
-            </GridItem> */}
-            </div>
-
-            <div>
-              <button
-                className={`${styles.button} ${styles.buyButton}`}
-                onClick={handleBuySellClick}
-              >
-                Buy
-              </button>
-              <button
-                className={`${styles.button} ${styles.sellButton}`}
-                onClick={handleBuySellClick}
-              >
-                Sell
-              </button>
-              <button
-                className={`${styles.button} ${styles.historyButton}`}
-                onClick={() => navigate(`/history`)}
-              >
-                History
-              </button>
-            </div>
+    <div className={styles.container}>
+      <Navbar />
+      <div className={styles.content}>
+        <div className={styles.charts}>
+          <h1 className={styles.mainTitle}>Market</h1>
+          <div className={styles.chartContainer}>
+            <h2 className="stock-name">{stock.name}</h2>
           </div>
 
-          <div className={styles.newsBox}>
-            <Box title="News">
-              <p>This is the latest news about {stock.name}.</p>
-              <p>More updates will be shown here.</p>
-            </Box>
+          <div>
+            <button
+              className={`${styles.button} ${styles.buyButton}`}
+              onClick={handleBuySellClick}
+            >
+              Buy
+            </button>
+            <button
+              className={`${styles.button} ${styles.sellButton}`}
+              onClick={handleBuySellClick}
+            >
+              Sell
+            </button>
+            <button
+              className={`${styles.button} ${styles.historyButton}`}
+              onClick={() => navigate(`/history`)}
+            >
+              History
+            </button>
           </div>
         </div>
 
-        {/* Modal Popup */}
-        {isModalOpen && (
-          <Modal onClose={handleCloseModal}>
-            <h2 className="text-xl font-bold mb-4">Stock Purchase Details</h2>
-            <p>Stock Name: {stock.name}</p>
-            <p>Price per Stock: ${stock.price}</p>
-            <p>Time: {new Date().toLocaleTimeString()}</p>
-            <label className="block mt-2">
-              No. of Stocks:
-              <input
-                type="number"
-                value={stockCount}
-                min="1"
-                onChange={(e) => setStockCount(e.target.value)}
-                className="border p-2 rounded w-full mt-1"
-              />
-            </label>
-            <label className="block mt-2">
-              Description:
-              <input
-                type="text"
-                value={desc}
-                placeholder="List out the reason(s) for your action"
-                onChange={(e) => setDesc(e.target.value)}
-                className="border p-2 rounded w-full mt-1"
-                required
-              />
-            </label>
-            <div className="mt-4 flex justify-center">
-              <button className="px-4 py-2 bg-blue-600 text-white rounded">
-                Proceed
-              </button>
-            </div>
-          </Modal>
-        )}
+        <div className={styles.newsBox}>
+          <Box title="News">
+            <p>This is the latest news about {stock.name}.</p>
+            <p>More updates will be shown here.</p>
+          </Box>
+        </div>
       </div>
-    </>
+
+      {isModalOpen && (
+        <Modal onClose={handleCloseModal}>
+          <h2 className="text-xl font-bold mb-4">Stock Purchase Details</h2>
+          <p>Stock Name: {stock.name}</p>
+          <p>Price per Stock: ${stock.price}</p>
+          <p>Time: {new Date().toLocaleTimeString()}</p>
+          <label className="block mt-2">
+            No. of Stocks:
+            <input
+              type="number"
+              value={stockCount}
+              min="1"
+              onChange={(e) => setStockCount(e.target.value)}
+              className="border p-2 rounded w-full mt-1"
+            />
+          </label>
+          <label className="block mt-2">
+            Description:
+            <input
+              type="text"
+              value={desc}
+              placeholder="Enter your Description"
+              onChange={(e) => setDesc(e.target.value)}
+              className="border p-2 rounded w-full mt-1"
+              required
+            />
+          </label>
+          <div className="mt-4 flex justify-center">
+            <button className="px-4 py-2 bg-blue-600 text-white rounded">
+              Proceed
+            </button>
+          </div>
+        </Modal>
+      )}
+    </div>
   );
 }
 
@@ -141,15 +117,6 @@ function Modal({ children, onClose }) {
     </div>
   );
 }
-
-// function GridItem({ title, children }) {
-//   return (
-//     <div className="flex flex-col items-center justify-center p-4 border border-slate-900 bg-slate-900/50 rounded-xl h-[400px]">
-//       <h3 className="text-2xl font-semibold text-white mb-4">{title}</h3>
-//       {children}
-//     </div>
-//   );
-// }
 
 function Box({ title, children }) {
   return (

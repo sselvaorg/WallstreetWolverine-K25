@@ -1,14 +1,17 @@
-/* General Container */
+/* General Container
 .container {
     padding: 20px;
     font-family: Arial, sans-serif;
     background-color: #1e1e2f;
     color: #ffffff;
     min-height: 100vh;
-}
+    width: screen;
+    height: screen;
+    display: flex;
+} */
 
 /* Navbar Styling */
-.navbar {
+/* .navbar {
     display: flex;
     justify-content: flex-end;
     gap: 20px;
@@ -26,9 +29,8 @@
 
 .navbar a:hover {
     text-decoration: underline;
-}
-
-/* Page Heading */
+} */
+/* 
 .heading {
     font-size: 28px;
     font-weight: bold;
@@ -37,7 +39,6 @@
     color: #ffffff;
 }
 
-/* Grid Layout */
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -47,7 +48,6 @@
     max-width: 1300px;
 }
 
-/* Section Headings */
 .sectionHeading {
     font-size: 22px;
     font-weight: bold;
@@ -55,7 +55,6 @@
     color: #ffffff;
 }
 
-/* News Section */
 .newsSection {
     background-color: #29293d;
     padding: 20px;
@@ -73,7 +72,6 @@
     color: #ffffff;
 }
 
-/* Stock List */
 .stockList {
     background-color: #29293d;
     padding: 20px;
@@ -96,4 +94,4 @@
 
     .stockButton:hover {
         background-color: #444;
-    }
+    } */

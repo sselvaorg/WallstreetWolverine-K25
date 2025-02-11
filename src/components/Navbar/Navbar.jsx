@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import image from "/images/kurukshetra-logo.webp";
+import image from "/images/K_25_Logo.png";
 import { navlinks } from "../../constants/navlinks";
 
 export default function Navbar() {
   const [isHam, setHam] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between px-4 md:px-6 relative z-[999999] w-full top-0 ">
-      <img src={image} alt="Logo" className="h-8 md:h-12" />
+    <nav className="flex items-center justify-between px-4 md:px-6 relative z-[999999] w-full top-0 p-5 ">
+      <a href="https://kurukshetraceg.org.in/" target="_blank">
+        <img src={image} alt="Logo" className="h-8 md:h-12" />
+      </a>
 
       <button
         className="sm:hidden text-gray-100 hover:text-blue-300 focus:outline-none z-50 relative"
