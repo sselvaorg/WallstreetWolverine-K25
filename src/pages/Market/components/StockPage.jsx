@@ -1,22 +1,25 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./StockPage.module.css";
 import PropTypes from "prop-types";
 import { stocks } from "../../../constants/market";
 import Navbar from "../../../components/Navbar/Navbar";
-
+import useServerTime from "./UseServerTime";
 function StockPage() {
-  const stock = stocks;
+  let name = useParams().id;
+  const stock = stocks.find((s) => s.name === name);
+  const currentTime = useServerTime();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [stockCount, setStockCount] = useState(1);
   const [desc, setDesc] = useState("");
-
+  //console.log(stock);
   if (!stock) {
     return <h2>Stock not found</h2>;
   }
 
   const handleBuySellClick = () => {
+    console.log(stock.prices);
     setIsModalOpen(true);
   };
 
@@ -34,16 +37,18 @@ function StockPage() {
             <h2 className="stock-name">{stock.name}</h2>
           </div>
 
-          <div>
+          <div className="">
             <button
               className={`${styles.button} ${styles.buyButton}`}
               onClick={handleBuySellClick}
+              disabled={currentTime < new Date(stock.headline1)}
             >
               Buy
             </button>
             <button
               className={`${styles.button} ${styles.sellButton}`}
               onClick={handleBuySellClick}
+              disabled={currentTime < new Date(stock.headline2)}
             >
               Sell
             </button>
@@ -68,7 +73,7 @@ function StockPage() {
         <Modal onClose={handleCloseModal}>
           <h2 className="text-xl font-bold mb-4">Stock Purchase Details</h2>
           <p>Stock Name: {stock.name}</p>
-          <p>Price per Stock: ${stock.price}</p>
+          <p>Price per Stock: ${stock.prices[0]}</p>
           <p>Time: {new Date().toLocaleTimeString()}</p>
           <label className="block mt-2">
             No. of Stocks:
