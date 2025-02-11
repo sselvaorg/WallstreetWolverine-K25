@@ -10,7 +10,6 @@ import axios from "axios";
 function StockPage() {
   let name = useParams().id;
   const stock = stocks.find((s) => s.name === name);
-  // const stock = stocks.find((s) => s.name === name);
   const currentTime = useServerTime();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
