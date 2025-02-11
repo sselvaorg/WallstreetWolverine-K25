@@ -1,6 +1,39 @@
+import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-
+import axios from "axios";
 export default function Profile() {
+  const [userData, setUserData] = useState({
+    "K! ID": "",
+    Name: "",
+    College: "",
+    Department: "",
+    Email: "",
+  });
+
+  const fetchDetails = async () => {
+    console.log("token", localStorage.getItem("token"));
+    try {
+      const response = await axios.get("http://localhost:5000/profile", {
+        headers: {
+          authorization: `${localStorage.getItem("token")}`,
+        },
+      });
+
+      const profileData = response.data.data;
+      console.log(profileData);
+      setUserData((prevUserData) => ({
+        ...prevUserData,
+        ...profileData,
+      }));
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDetails();
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-r from-red-300 to-blue-500">
       <Navbar />
@@ -12,16 +45,19 @@ export default function Profile() {
         <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
           <div className="bg-gradient-to-r from-red-300 to-blue-300 rounded-lg p-4 sm:p-6 shadow-lg w-full self-start">
             <div className="flex flex-col gap-4 sm:gap-6">
-              {["K! ID", "Name", "College", "Department", "Email"].map(
-                (label, index) => (
-                  <div key={index} className="flex flex-col">
-                    <span className="text-base sm:text-lg font-medium">
-                      {label}
+              {Object.entries(userData).map(([key, value], index) => (
+                <div key={index} className="flex flex-col">
+                  <div className="flex flex-row justify-between">
+                    <span className="text-md sm:text-lg font-medium w-[30%] text-justify">
+                      {key}
                     </span>
-                    <hr className="border-t border-gray-600 mt-1" />
+                    <span className="text-md lg:text-lg font-medium w-[70%] text-center">
+                      {value}
+                    </span>
                   </div>
-                )
-              )}
+                  <hr className="border-t border-gray-600 mt-1" />
+                </div>
+              ))}
             </div>
           </div>
 

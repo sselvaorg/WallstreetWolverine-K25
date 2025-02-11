@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./StockPage.module.css";
 import PropTypes from "prop-types";
-
+import Navbar from "../../../components/Navbar/Navbar";
 const stockDetails = {
   1: { name: "Aquashop", price: 120.5 },
   2: { name: "RazerElectronics", price: 98.75 },
@@ -20,7 +20,7 @@ function StockPage() {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [stockCount, setStockCount] = useState(1);
-  const [desc,setDesc] = useState("");
+  const [desc, setDesc] = useState("");
 
   if (!stock) {
     return <h2>Stock not found</h2>;
@@ -35,87 +35,94 @@ function StockPage() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.content}>
-        <div className={styles.charts}>
-          <h1 className={styles.mainTitle}>Market</h1>
-          <div className={styles.chartContainer}>
-            <h2 className="stock-name">{stock.name}</h2>
-            {/* <GridItem>
+    <>
+      <div className="w-full fixed left-0 mb-4">
+        <Navbar />
+      </div>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <div className={styles.charts}>
+            <h1 className={styles.mainTitle}>Market</h1>
+            <div className={styles.chartContainer}>
+              <h2 className="stock-name">{stock.name}</h2>
+              {/* <GridItem>
               <LineChart />
             </GridItem> */}
-          </div>
+            </div>
 
-          <div className={styles.chartContainer}>
-            {/* <GridItem>
+            <div className={styles.chartContainer}>
+              {/* <GridItem>
               <LineChart1 />
             </GridItem> */}
+            </div>
+
+            <div>
+              <button
+                className={`${styles.button} ${styles.buyButton}`}
+                onClick={handleBuySellClick}
+              >
+                Buy
+              </button>
+              <button
+                className={`${styles.button} ${styles.sellButton}`}
+                onClick={handleBuySellClick}
+              >
+                Sell
+              </button>
+              <button
+                className={`${styles.button} ${styles.historyButton}`}
+                onClick={() => navigate(`/history`)}
+              >
+                History
+              </button>
+            </div>
           </div>
 
-          <div>
-            <button
-              className={`${styles.button} ${styles.buyButton}`}
-              onClick={handleBuySellClick}
-            >
-              Buy
-            </button>
-            <button
-              className={`${styles.button} ${styles.sellButton}`}
-              onClick={handleBuySellClick}
-            >
-              Sell
-            </button>
-            <button
-              className={`${styles.button} ${styles.historyButton}`}
-              onClick={() => navigate(`/history`)}
-            >
-              History
-            </button>
+          <div className={styles.newsBox}>
+            <Box title="News">
+              <p>This is the latest news about {stock.name}.</p>
+              <p>More updates will be shown here.</p>
+            </Box>
           </div>
         </div>
 
-        <div className={styles.newsBox}>
-          <Box title="News">
-            <p>This is the latest news about {stock.name}.</p>
-            <p>More updates will be shown here.</p>
-          </Box>
-        </div>
+        {/* Modal Popup */}
+        {isModalOpen && (
+          <Modal onClose={handleCloseModal}>
+            <h2 className="text-xl font-bold mb-4">Stock Purchase Details</h2>
+            <p>Stock Name: {stock.name}</p>
+            <p>Price per Stock: ${stock.price}</p>
+            <p>Time: {new Date().toLocaleTimeString()}</p>
+            <label className="block mt-2">
+              No. of Stocks:
+              <input
+                type="number"
+                value={stockCount}
+                min="1"
+                onChange={(e) => setStockCount(e.target.value)}
+                className="border p-2 rounded w-full mt-1"
+              />
+            </label>
+            <label className="block mt-2">
+              Description:
+              <input
+                type="text"
+                value={desc}
+                placeholder="List out the reason(s) for your action"
+                onChange={(e) => setDesc(e.target.value)}
+                className="border p-2 rounded w-full mt-1"
+                required
+              />
+            </label>
+            <div className="mt-4 flex justify-center">
+              <button className="px-4 py-2 bg-blue-600 text-white rounded">
+                Proceed
+              </button>
+            </div>
+          </Modal>
+        )}
       </div>
-
-      {/* Modal Popup */}
-      {isModalOpen && (
-        <Modal onClose={handleCloseModal}>
-          <h2 className="text-xl font-bold mb-4">Stock Purchase Details</h2>
-          <p>Stock Name: {stock.name}</p>
-          <p>Price per Stock: ${stock.price}</p>
-          <p>Time: {new Date().toLocaleTimeString()}</p>
-          <label className="block mt-2">
-            No. of Stocks:
-            <input
-              type="number"
-              value={stockCount}
-              min="1"
-              onChange={(e) => setStockCount(e.target.value)}
-              className="border p-2 rounded w-full mt-1"
-            />
-          </label>
-          <label className="block mt-2">
-            Description:
-            <input type="text" 
-            value = {desc}
-            placeholder="Enter your Description"
-            onChange={(e)=>setDesc(e.target.value)}
-            className="border p-2 rounded w-full mt-1"
-            required/>
-          </label>
-          <div className="mt-4 flex justify-center">
-            <button className="px-4 py-2 bg-blue-600 text-white rounded">
-              Proceed
-            </button>
-          </div>
-        </Modal>
-      )}
-    </div>
+    </>
   );
 }
 

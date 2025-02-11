@@ -8,7 +8,7 @@ import Rules from "./pages/Rules/Rules";
 import Contact from "./pages/Contact/Contact";
 import Login from "./pages/Login/Login";
 import StockPage from "./pages/Market/components/StockPage";
-
+import Register from "./pages/Login/Register";
 export default function App() {
   return (
     <Router>
@@ -22,6 +22,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/stock/:id" element={<StockPage />} />
+        <Route path="/register" element={<Register/>}/>
       </Routes>
     </Router>
   );
