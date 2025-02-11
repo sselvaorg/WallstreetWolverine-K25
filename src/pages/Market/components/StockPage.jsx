@@ -1,93 +1,94 @@
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate,useParams } from "react-router-dom";
 import styles from "./StockPage.module.css";
-import LineChart from "./LineChart";
-import LineChart1 from "./LineChart1";
-
-const stockDetails = {
-  1: {
-    name: "Aquashop",
-    description: "Details about Aquashop",
-    imgSrc: "/images/aquashop.png",
-  },
-  2: {
-    name: "RazerElectronics",
-    description: "Details about RazerElectronics",
-    imgSrc: "/images/razer.png",
-  },
-  3: {
-    name: "BVInfra",
-    description: "Details about BVInfra",
-    imgSrc: "/images/bvinfra.png",
-  },
-  4: {
-    name: "GoalEnterprise",
-    description: "Details about GoalEnterprise",
-    imgSrc: "/images/goal.png",
-  },
-  5: {
-    name: "MedPharma",
-    description: "Details about MedPharma",
-    imgSrc: "/images/medpharma.png",
-  },
-  6: {
-    name: "Paradigm",
-    description: "Details about Paradigm",
-    imgSrc: "/images/paradigm.png",
-  },
-  7: {
-    name: "ViFinance",
-    description: "Details about ViFinance",
-    imgSrc: "/images/vifinance.png",
-  },
-  8: {
-    name: "ForgeTech",
-    description: "Details about ForgeTech",
-    imgSrc: "/images/forgetech.png",
-  },
-};
+import PropTypes from "prop-types";
+import { stocks } from "../../../constants/market";
+import Navbar from "../../../components/Navbar/Navbar";
+import axios from "axios";
 
 function StockPage() {
-  const { id } = useParams();
-  const stock = stockDetails[id];
+  let name = useParams().id;
+  const stock = stocks.find((s) => s.name === name);
+  // const stock = stocks;
+  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [stockCount, setStockCount] = useState(1);
+  const [desc, setDesc] = useState("");
 
   if (!stock) {
     return <h2>Stock not found</h2>;
   }
 
+  const handleBuySellClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleBuy = async (e) => {
+    e.preventDefault();
+
+    try{
+      const response = await axios.post("http://localhost:5000/:column/:value/:nos");
+      alert("Stock has been bought");
+      localStorage.setItem("token", response.data.token);
+  
+    } catch(error) {
+      console.error("Can't Buy The Stock :",error.response?.data?.message || error.message);
+      alert(error.response?.data?.message || "Stock Purchase Failed. Please try again.");
+    }
+  }
+
+  const handleSell = async (e) => {
+    e.preventDefault();
+    try{
+
+    } catch(error) {
+      console.log("Can't Sell the Stock : ",error.response?.data?.message || error.message);
+      alert(error.response?.data?.message || "Stock Purchase Failed. Please try again.");
+    }
+  }
+
   return (
     <div className={styles.container}>
+      <Navbar />
       <div className={styles.content}>
-        {/* Left Side - Charts */}
-
         <div className={styles.charts}>
           <h1 className={styles.mainTitle}>Market</h1>
           <div className={styles.chartContainer}>
             <h2 className="stock-name">{stock.name}</h2>
-            <GridItem>
-              <LineChart />
-            </GridItem>
+            <div className={styles.chartContainer}>
+            <div className="text-green-300">
+              {stock.description}
+            </div>
           </div>
-
-          <div className={styles.chartContainer}>
-            <GridItem>
-              <LineChart1 />
-            </GridItem>
           </div>
+          
 
           <div>
-            <button className={`${styles.button} ${styles.buyButton}`}>
+            <button
+              className={`${styles.button} ${styles.buyButton}`}
+              onClick={handleBuySellClick}
+            >
               Buy
             </button>
-            <button className={`${styles.button} ${styles.sellButton}`}>
+            <button
+              className={`${styles.button} ${styles.sellButton}`}
+              onClick={handleBuySellClick}
+            >
               Sell
             </button>
-            <button className={`${styles.button} ${styles.historyButton}`}>
+            <button
+              className={`${styles.button} ${styles.historyButton}`}
+              onClick={() => navigate(`/history`)}
+            >
               History
             </button>
           </div>
         </div>
 
-        {/* Right Side - News Box */}
         <div className={styles.newsBox}>
           <Box title="News">
             <p>This is the latest news about {stock.name}.</p>
@@ -95,20 +96,61 @@ function StockPage() {
           </Box>
         </div>
       </div>
+
+      {isModalOpen && (
+        <Modal onClose={handleCloseModal}>
+          <h2 className="text-xl font-bold mb-4">Stock Purchase Details</h2>
+          <p>Stock Name: {stock.name}</p>
+          <p>Price per Stock: ${stock.prices[0]}</p>
+          <p>Time: {new Date().toLocaleTimeString()}</p>
+          <label className="block mt-2">
+            No. of Stocks:
+            <input
+              type="number"
+              value={stockCount}
+              min="1"
+              onChange={(e) => setStockCount(e.target.value)}
+              className="border p-2 rounded w-full mt-1"
+            />
+          </label>
+          <label className="block mt-2">
+            Description:
+            <input
+              type="text"
+              value={desc}
+              placeholder="Enter your Description"
+              onChange={(e) => setDesc(e.target.value)}
+              className="border p-2 rounded w-full mt-1"
+              required
+            />
+          </label>
+          <div className="mt-4 flex justify-center">
+            <button className="px-4 py-2 bg-blue-600 text-white rounded">
+              Proceed
+            </button>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }
 
-function GridItem({ title, children }) {
+function Modal({ children, onClose }) {
   return (
-    <div className="flex flex-col items-center justify-center p-4 border border-slate-900 bg-slate-900/50 rounded-xl h-[400px]">
-      <h3 className="text-2xl font-semibold text-white mb-4">{title}</h3>
-      {children}
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-[400px] relative">
+        <button
+          className="absolute top-2 right-2 text-gray-500"
+          onClick={onClose}
+        >
+          ✖
+        </button>
+        {children}
+      </div>
     </div>
   );
 }
 
-// Reusable Box Component
 function Box({ title, children }) {
   return (
     <div className="p-4 bg-white shadow-md rounded-md border border-gray-300">
@@ -119,3 +161,13 @@ function Box({ title, children }) {
 }
 
 export default StockPage;
+
+Modal.propTypes = {
+  children: PropTypes.object.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
+Box.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.object.isRequired,
+};

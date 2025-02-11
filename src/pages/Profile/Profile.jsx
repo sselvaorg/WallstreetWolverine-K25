@@ -1,49 +1,91 @@
+import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-
+import axios from "axios";
 export default function Profile() {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-medium">
-      <Navbar />
-      <h1 className="text-5xl font-bold text-blue-500 mb-10 tracking-wide">
-        PROFILE
-      </h1>
-      <div className="w-full max-w-5xl grid grid-cols-2 gap-8">
-        <div className="bg-gradient-to-r from-red-300 to-blue-300 rounded-lg p-4 shadow-lg h-72">
-          <div className="space-y-4">
-            {["K! ID", "Name", "College", "Department", "Email"].map(
-              (label, index) => (
-                <div key={index} className="flex flex-col">
-                  <span className="text-lg font-medium">{label}</span>
-                  <hr className="border-t border-gray-600 mt-2" />
-                </div>
-              )
-            )}
-          </div>
-        </div>
+  const [userData, setUserData] = useState({
+    "K! ID": "",
+    Name: "",
+    College: "",
+    Department: "",
+    Email: "",
+  });
 
-        <div className="bg-gradient-to-r from-red-300 to-blue-300 rounded-lg p-6 shadow-lg">
-          <div className="grid grid-cols-2 font-semibold text-lg pb-3 border-b border-gray-600">
-            <span>List of companies</span>
-            <span className="text-right">Number of stocks</span>
+  const fetchDetails = async () => {
+    console.log("token", localStorage.getItem("token"));
+    try {
+      const response = await axios.get("http://localhost:5000/profile", {
+        headers: {
+          authorization: `${localStorage.getItem("token")}`,
+        },
+      });
+
+      const profileData = response.data.data;
+      console.log(profileData);
+      setUserData((prevUserData) => ({
+        ...prevUserData,
+        ...profileData,
+      }));
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDetails();
+  }, []);
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-r from-[#01041f] to-[#021844]">
+      <Navbar />
+      <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 ">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-500 mb-6 sm:mb-8 tracking-wide text-center">
+          PROFILE
+        </h1>
+
+        <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+          <div className="bg-gradient-to-r from-red-300 to-blue-300 rounded-lg p-4 sm:p-6 shadow-lg w-full self-start">
+            <div className="flex flex-col gap-4 sm:gap-6">
+              {Object.entries(userData).map(([key, value], index) => (
+                <div key={index} className="flex flex-col">
+                  <div className="flex flex-row justify-between">
+                    <span className="text-md sm:text-lg font-medium w-[30%] text-justify">
+                      {key}
+                    </span>
+                    <span className="text-md lg:text-lg font-medium w-[70%] text-center">
+                      {value}
+                    </span>
+                  </div>
+                  <hr className="border-t border-gray-600 mt-1" />
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="mt-4 space-y-4">
-            {[
-              "Aquashop",
-              "Razer Electronics",
-              "BV Infra",
-              "Goal Enterprise",
-              "Med Pharma",
-              "Paradigm",
-              "VI Finance",
-            ].map((company, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-2 text-md font-medium py-2 px-4 bg-white rounded-md shadow-md"
-              >
-                <span>{company}</span>
-                <span className="text-right">0</span>
-              </div>
-            ))}
+
+          <div className="bg-gradient-to-r from-red-300 to-blue-300 rounded-lg p-4 sm:p-6 shadow-lg w-full">
+            <div className="grid grid-cols-2 font-semibold text-base sm:text-lg pb-2 sm:pb-3 border-b border-gray-600">
+              <span>List of companies</span>
+              <span className="text-right">Number of stocks</span>
+            </div>
+
+            <div className="mt-3 sm:mt-4 flex flex-col gap-3 sm:gap-4">
+              {[
+                "Aquashop",
+                "Razer Electronics",
+                "BV Infra",
+                "Goal Enterprise",
+                "Med Pharma",
+                "Paradigm",
+                "VI Finance",
+              ].map((company, index) => (
+                <div
+                  key={index}
+                  className="grid grid-cols-2 text-sm sm:text-md font-medium py-2 px-3 sm:px-4 bg-white rounded-md shadow-md"
+                >
+                  <span>{company}</span>
+                  <span className="text-right">0</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

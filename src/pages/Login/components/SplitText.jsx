@@ -65,7 +65,7 @@ const SplitText = ({
         <animated.span
           key={index}
           style={props}
-          className="inline-block transform transition-opacity will-change-transform"
+          className="inline-block transform transition-opacity will-change-transform text-white"
         >
           {letters[index] === " " ? " " : letters[index]}
         </animated.span>

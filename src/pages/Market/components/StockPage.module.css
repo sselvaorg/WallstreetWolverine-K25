@@ -5,8 +5,11 @@
     background-color: #1e1e2f;
     color: #140707;
     min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
     display: flex; /* Flex layout for main content */
     justify-content: center;
+    flex-direction: column;
 }
 
 /* Flex Layout for Content */
@@ -15,6 +18,8 @@
     flex-direction: row;
     gap: 20px;
     width: 100%;
+    height: 100%;
+    margin-top: 40px;
 }
 
 /* Left Side - Charts Section */
