@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styles from "./StockPage.module.css";
 import PropTypes from "prop-types";
 import { stocks } from "../../../constants/market";
 import Navbar from "../../../components/Navbar/Navbar";
@@ -18,7 +17,7 @@ function StockPage() {
   const [desc, setDesc] = useState("");
 
   if (!stock) {
-    return <h2>Stock not found</h2>;
+    return <h2 className="text-white text-center text-2xl">Stock not found</h2>;
   }
 
   const headline1Time = new Date(stock.headline1);
@@ -92,19 +91,28 @@ function StockPage() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className="h-screen w-screen bg-[#1e1e2f] overflow-hidden text-white flex flex-col font-sans">
       <Navbar />
-      <div className={styles.content}>
-        <div className={styles.charts}>
-          <h1 className={styles.mainTitle}>Market</h1>
-          <div className={styles.chartContainer}>
-            <h2 className="stock-name">{stock.name}</h2>
+      <div className="flex flex-col md:flex-row gap-4 w-full h-full">
+        <div className=" flex-1 md:flex-2 w-[4/5]">
+          <h1 className="text-4xl font-bold text-center uppercase text-white">
+            Market
+          </h1>
+          <div className="bg-[#29293d] p-5 rounded-lg shadow-lg mt-5">
+            <h2 className="text-[#64a0df] text-3xl font-bold text-center mb-5">
+              {stock.name}
+            </h2>
             <div className="text-green-300">{stock.description}</div>
           </div>
 
-          <div>
+          <div className="flex flex-row justify-center gap-4 items-center p-5">
             <button
-              className={`${styles.button} ${styles.buyButton}`}
+              className={`p-2 font-bold rounded flex transition transform hover:scale-105 hover:shadow-lg   
+                ${
+                  canBuy
+                    ? "bg-green-600 hover:bg-green-700 text-white"
+                    : "bg-gray-600 text-gray-300 cursor-not-allowed"
+                }`}
               onClick={() => handleBuySellClick(true)}
               disabled={!canBuy}
               title={!canBuy ? "Buying not available at this time" : ""}
@@ -113,7 +121,12 @@ function StockPage() {
             </button>
 
             <button
-              className={`${styles.button} ${styles.sellButton}`}
+              className={`p-2 font-bold rounded flex transition transform hover:scale-105 hover:shadow-lg
+                ${
+                  canSell
+                    ? "bg-red-600 hover:bg-red-700 text-white"
+                    : "bg-gray-600 text-gray-300 cursor-not-allowed"
+                }`}
               onClick={() => handleBuySellClick(false)}
               disabled={!canSell}
               title={!canSell ? "Selling not available at this time" : ""}
@@ -122,7 +135,7 @@ function StockPage() {
             </button>
 
             <button
-              className={`${styles.button} ${styles.historyButton}`}
+              className="p-2 bg-yellow-500 hover:bg-yellow-600 flex text-white rounded transition transform hover:scale-105 hover:shadow-lg"
               onClick={() => navigate(`/history`)}
             >
               History
@@ -130,7 +143,7 @@ function StockPage() {
           </div>
         </div>
 
-        <div className={styles.newsBox}>
+        <div className=" bg-[#29293d] p-5 rounded-lg shadow-lg flex flex-col items-center flex-1 md:flex-1">
           <Box title="News">
             <p>This is the latest news about {stock.name}.</p>
             {currentTime >= new Date(stock.headline1) && (
@@ -139,7 +152,6 @@ function StockPage() {
             {currentTime >= new Date(stock.headline2) && (
               <p className="text-red-500 font-semibold">{stock.news2}</p>
             )}
-
             <p>More updates will be shown here.</p>
           </Box>
         </div>
@@ -160,7 +172,7 @@ function StockPage() {
               value={stockCount}
               min="1"
               onChange={(e) => setStockCount(e.target.value)}
-              className="border p-2 rounded w-full mt-1"
+              className="border p-2 rounded w-full mt-1 bg-gray-200 text-black"
             />
           </label>
           <label className="block mt-2">
@@ -170,13 +182,13 @@ function StockPage() {
               value={desc}
               placeholder="Enter your Description"
               onChange={(e) => setDesc(e.target.value)}
-              className="border p-2 rounded w-full mt-1"
+              className="border p-2 rounded w-full mt-1 bg-gray-200 text-black"
               required
             />
           </label>
           <div className="mt-4 flex justify-center">
             <button
-              className="px-4 py-2 bg-blue-600 text-white rounded"
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
               onClick={handleTransaction}
             >
               Proceed
@@ -191,9 +203,9 @@ function StockPage() {
 function Modal({ children, onClose }) {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-[400px] relative">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-96 relative text-black">
         <button
-          className="absolute top-2 right-2 text-gray-500"
+          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
           onClick={onClose}
         >
           ✖
@@ -206,14 +218,12 @@ function Modal({ children, onClose }) {
 
 function Box({ title, children }) {
   return (
-    <div className="p-4 bg-white shadow-md rounded-md border border-gray-300">
-      {title && <h2 className="text-lg font-bold mb-2">{title}</h2>}
+    <div className="p-4 bg-white shadow-md rounded-md border border-gray-300 text-black w-full">
+      {title && <h2 className="text-lg font-bold mb-2 text-center">{title}</h2>}
       {children}
     </div>
   );
 }
-
-export default StockPage;
 
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
@@ -224,3 +234,5 @@ Box.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
+
+export default StockPage;
