@@ -24,15 +24,27 @@ function App() {
     console.log("Submitting form:", formData);
 
     try {
-      const response = await axios.post("http://localhost:5000/user/login", formData);
+      const response = await axios.post(
+        "http://localhost:5000/user/login",
+        formData
+      );
       console.log("Login Successful:", response.data);
       alert("Login Successful!");
 
       // Store JWT token in local storage (for authentication)
       localStorage.setItem("token", response.data.token);
     } catch (error) {
-      console.error("Login Failed:", error.response?.data?.message || error.message);
+      console.error(
+        "Login Failed:",
+        error.response?.data?.message || error.message
+      );
       alert(error.response?.data?.message || "Login failed. Please try again.");
+    }
+    finally{
+      setFormData({
+        email: "",
+        password: "",
+      });
     }
   };
 
@@ -93,7 +105,14 @@ function App() {
                 required
               />
 
-              <StarBorder as="button" type="submit" className="custom-class" color="cyan" speed="7s" loop>
+              <StarBorder
+                as="button"
+                type="submit"
+                className="custom-class"
+                color="cyan"
+                speed="7s"
+                loop
+              >
                 Login
               </StarBorder>
             </form>

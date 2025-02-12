@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
+
 export default function Profile() {
   const [userData, setUserData] = useState({
     "K! ID": "",
@@ -9,6 +10,8 @@ export default function Profile() {
     Department: "",
     Email: "",
   });
+
+  const [stocks, setStocks] = useState({});
 
   const fetchDetails = async () => {
     console.log("token", localStorage.getItem("token"));
@@ -19,12 +22,16 @@ export default function Profile() {
         },
       });
 
-      const profileData = response.data.data;
-      console.log(profileData);
+      const { userTable, stockTable } = response.data.profile;
+      console.log("User Data:", userTable);
+      console.log("Stock Data:", stockTable);
+
       setUserData((prevUserData) => ({
         ...prevUserData,
-        ...profileData,
+        ...userTable,
       }));
+
+      setStocks(stockTable || {});
     } catch (error) {
       console.error("Error fetching profile:", error);
     }
@@ -60,31 +67,28 @@ export default function Profile() {
               ))}
             </div>
           </div>
-
           <div className="bg-gradient-to-r from-red-300 to-blue-300 rounded-lg p-4 sm:p-6 shadow-lg w-full">
             <div className="grid grid-cols-2 font-semibold text-base sm:text-lg pb-2 sm:pb-3 border-b border-gray-600">
-              <span>List of companies</span>
-              <span className="text-right">Number of stocks</span>
+              <span>List of Companies</span>
+              <span className="text-right">Number of Stocks</span>
             </div>
 
             <div className="mt-3 sm:mt-4 flex flex-col gap-3 sm:gap-4">
-              {[
-                "Aquashop",
-                "Razer Electronics",
-                "BV Infra",
-                "Goal Enterprise",
-                "Med Pharma",
-                "Paradigm",
-                "VI Finance",
-              ].map((company, index) => (
-                <div
-                  key={index}
-                  className="grid grid-cols-2 text-sm sm:text-md font-medium py-2 px-3 sm:px-4 bg-white rounded-md shadow-md"
-                >
-                  <span>{company}</span>
-                  <span className="text-right">0</span>
-                </div>
-              ))}
+              {Object.keys(stocks).length > 0 ? (
+                Object.entries(stocks).map(([company, count], index) => (
+                  <div
+                    key={index}
+                    className="grid grid-cols-2 text-sm sm:text-md font-medium py-2 px-3 sm:px-4 bg-white rounded-md shadow-md"
+                  >
+                    <span>{company}</span>
+                    <span className="text-right">{count}</span>
+                  </div>
+                ))
+              ) : (
+                <p className="text-center text-md text-gray-700">
+                  No stocks found.
+                </p>
+              )}
             </div>
           </div>
         </div>

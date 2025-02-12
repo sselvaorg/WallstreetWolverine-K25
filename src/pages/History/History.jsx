@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 // import { apiGetHistory } from '../../auth/auth';
 import Heading from "../../components/Heading/Heading";
 import styles from "./History.module.css";
