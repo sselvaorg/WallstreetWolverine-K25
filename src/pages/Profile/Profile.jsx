@@ -43,7 +43,7 @@ export default function Profile() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[url('src/pages/Profile/bullbear.jpg')] bg-cover bg-center lg:bg-top opacity-100">
+    <div className="min-h-screen flex flex-col bg-[url('src/pages/Profile/components/bullbear.jpg')] bg-cover bg-center lg:bg-top opacity-100">
       <div className="absolute inset-0 bg-black opacity-40"></div>
       <Navbar />
       <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 ">
