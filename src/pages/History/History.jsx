@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import { apiGetHistory } from '../../auth/auth';
 import Heading from "../../components/Heading/Heading";
 import styles from "./History.module.css";
-
+import axios from "axios";
 
 // function Historyrecord(props){
 
@@ -26,8 +26,6 @@ import styles from "./History.module.css";
 //     // return <>hii</>
 
 // }
-
-
 
 // class History extends React.Component{
 
@@ -66,8 +64,6 @@ import styles from "./History.module.css";
 //         }
 //       }
 
-
-
 //     componentDidMount() {
 //       if(localStorage.getItem('token')==null){
 //         window.location='/login';
@@ -80,7 +76,6 @@ import styles from "./History.module.css";
 //         };
 //         this.fetchHistory(config);
 //       }
-
 
 //       render(){
 //         //   console.log(response+"askj")
@@ -100,23 +95,64 @@ import styles from "./History.module.css";
 //       }
 // }
 
-function History(){
-  return(
+function History() {
+  const [history, setHistory] = useState([]);
+
+  const fetchHistory = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/history", {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      });
+      console.log(response);
+      setHistory(response.data.historyData);
+    } catch (error) {
+      console.error("Error occurred :", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchHistory();
+  }, []);
+  return (
     <div className="min-h-screen flex flex-col bg-gradient-to-r from-red-300 to-blue-500">
-    <div className={`${styles.tableContainer}`}>
-                 <Heading text="TRANSACTIONS" />
-                 <table className={`${styles.transactionTable}`}>
-                     <thead>
-                     <tr>
-                         <th>Company</th>
-                         <th>Quantity</th>
-                         <th>Flag</th>
-                     </tr>
-                     </thead>
-                     {/* {this.state.datalist} */}
-                      </table>
-</div>
-</div>
+      <div className={`${styles.tableContainer}`}>
+        <Heading text="TRANSACTIONS" />
+        <table className={`${styles.transactionTable}`}>
+          <thead className="p-5 m-4">
+            <tr colSpan={3} className="w-[100%]">
+              <th colSpan={1} className="w-[30%]">
+                Company
+              </th>
+              <th colSpan={1} className="lg:w-[30%]">
+                Quantity
+              </th>
+              <th colSpan={1} className="lg:w-[30%]">
+                Flag
+              </th>
+            </tr>
+          </thead>
+          {/* {this.state.datalist} */}
+          {history &&
+            history.length > 0 &&
+            history.map((record, index) => {
+              return (
+                <tr key={index + 1} className="text-center font-semibold">
+                  <td>{record.company}</td>
+                  <td>{record.noOfStocks}</td>
+                  <td>{record.flag}</td>
+                </tr>
+              );
+            })}
+          {history.length === 0 && (
+            <tr className="text-center w-full">
+              <td colSpan={3}>No history of transaction was found</td>
+            </tr>
+          )}
+        </table>
+      </div>
+    </div>
   );
 }
 
