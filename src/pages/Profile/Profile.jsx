@@ -12,6 +12,7 @@ export default function Profile() {
   });
 
   const [stocks, setStocks] = useState({});
+  const [stockPage, setStockPage] = useState(1);
 
   const fetchDetails = async () => {
     console.log("token", localStorage.getItem("token"));
@@ -75,20 +76,41 @@ export default function Profile() {
 
             <div className="mt-3 sm:mt-4 flex flex-col gap-3 sm:gap-4">
               {Object.keys(stocks).length > 0 ? (
-                Object.entries(stocks).map(([company, count], index) => (
-                  <div
-                    key={index}
-                    className="grid grid-cols-2 text-sm sm:text-md font-medium py-2 px-3 sm:px-4 bg-white rounded-md shadow-md"
-                  >
-                    <span>{company}</span>
-                    <span className="text-right">{count}</span>
-                  </div>
-                ))
+                Object.entries(stocks)
+                  .slice((stockPage - 1) * 6, stockPage * 6)
+                  .map(([company, count], index) => (
+                    <div
+                      key={index}
+                      className="grid grid-cols-2 text-sm sm:text-md font-medium py-2 px-3 sm:px-4 bg-white rounded-md shadow-md"
+                    >
+                      <span>{company}</span>
+                      <span className="text-right">{count}</span>
+                    </div>
+                  ))
               ) : (
                 <p className="text-center text-md text-gray-700">
                   No stocks found.
                 </p>
               )}
+              <div className="flex w-full p-3 justify-between">
+                <button
+                  disabled={stockPage === 1}
+                  onClick={() => setStockPage(stockPage - 1)}
+                  className="font-semibold  px-4 py-2 bg-gradient-to-r from-blue-400 to-red-400 rounded disabled:opacity-70"
+                >
+                  Previous
+                </button>
+                <span>
+                  Page {stockPage} of {4}{" "}
+                </span>
+                <button
+                  disabled={stockPage === 4}
+                  onClick={() => setStockPage(stockPage + 1)}
+                  className="font-semibold px-4 py-2 bg-gradient-to-r  from-red-400 to-blue-400 rounded disabled:opacity-70"
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         </div>

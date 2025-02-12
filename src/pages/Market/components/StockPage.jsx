@@ -30,14 +30,14 @@ function StockPage() {
   let canBuy = false;
   let canSell = false;
 
-  if (currentTime >= headline1Time && currentTime < bufferEnd1Time) {
+  if (currentTime >= headline1Time && currentTime <= bufferEnd1Time) {
     buyPrice = stock.prices[0];
     canBuy = true;
-  } else if (currentTime >= bufferEnd1Time && currentTime < headline2Time) {
+  } else if (currentTime > bufferEnd1Time && currentTime <= headline2Time) {
     buyPrice = stock.prices[1];
     canBuy = true;
   }
-  if (currentTime >= headline2Time && currentTime < bufferEnd2Time) {
+  if (currentTime > headline2Time && currentTime < bufferEnd2Time) {
     sellPrice = stock.prices[1];
     canSell = true;
   } else if (currentTime >= bufferEnd2Time) {
