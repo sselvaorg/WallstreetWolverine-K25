@@ -43,16 +43,17 @@ export default function Profile() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-r from-[#01041f] to-[#021844]">
+    <div className="min-h-screen flex flex-col bg-[url('src/pages/Profile/bullbear.jpg')] bg-cover bg-center lg:bg-top opacity-100">
+      <div className="absolute inset-0 bg-black opacity-40"></div>
       <Navbar />
       <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 ">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-500 mb-6 sm:mb-8 tracking-wide text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold z-10 rounded-xl text-white  mb-6 sm:mb-8 tracking-wide text-center">
           PROFILE
         </h1>
 
         <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-          <div className="bg-gradient-to-r from-red-300 to-blue-300 rounded-lg p-4 sm:p-6 shadow-lg w-full self-start">
-            <div className="flex flex-col gap-4 sm:gap-6">
+          <div className="backdrop-blur-xl text-white  p-4 sm:p-6 shadow-lg w-full self-start border border-white rounded-2xl">
+            <div className="flex flex-col gap-4 sm:gap-6 ">
               {Object.entries(userData).map(([key, value], index) => (
                 <div key={index} className="flex flex-col">
                   <div className="flex flex-row justify-between">
@@ -68,7 +69,7 @@ export default function Profile() {
               ))}
             </div>
           </div>
-          <div className="bg-gradient-to-r from-red-300 to-blue-300 rounded-lg p-4 sm:p-6 shadow-lg w-full">
+          <div className="backdrop-blur-xl text-white border border-white p-4 rounded-2xl sm:p-6 shadow-lg w-full">
             <div className="grid grid-cols-2 font-semibold text-base sm:text-lg pb-2 sm:pb-3 border-b border-gray-600">
               <span>List of Companies</span>
               <span className="text-right">Number of Stocks</span>
@@ -81,7 +82,7 @@ export default function Profile() {
                   .map(([company, count], index) => (
                     <div
                       key={index}
-                      className="grid grid-cols-2 text-sm sm:text-md font-medium py-2 px-3 sm:px-4 bg-white rounded-md shadow-md"
+                      className="grid grid-cols-2 text-sm sm:text-md font-medium py-2 px-3 sm:px-4  rounded-md shadow-black shadow-sm"
                     >
                       <span>{company}</span>
                       <span className="text-right">{count}</span>
@@ -92,11 +93,11 @@ export default function Profile() {
                   No stocks found.
                 </p>
               )}
-              <div className="flex w-full p-3 justify-between">
+              <div className="flex w-full lg:p-3 justify-between">
                 <button
                   disabled={stockPage === 1}
                   onClick={() => setStockPage(stockPage - 1)}
-                  className="font-semibold  px-4 py-2 bg-gradient-to-r from-blue-400 to-red-400 rounded disabled:opacity-70"
+                  className="font-bold lg:px-6 px-4 py-2 backdrop-blur-xl border border-white  rounded-2xl  disabled:opacity-70"
                 >
                   Previous
                 </button>
@@ -106,7 +107,7 @@ export default function Profile() {
                 <button
                   disabled={stockPage === 4}
                   onClick={() => setStockPage(stockPage + 1)}
-                  className="font-semibold px-4 py-2 bg-gradient-to-r  from-red-400 to-blue-400 rounded disabled:opacity-70"
+                  className="font-bold lg:px-6 px-4 py-2 backdrop-blur-xl border border-white  rounded-2xl  disabled:opacity-70"
                 >
                   Next
                 </button>
