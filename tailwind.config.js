@@ -9,7 +9,9 @@ export default {
         euroStyle: "'EuroStyle', sans-serif",
       },
       colors:{
-        medium:"#15394d",
+        dark: "#0b1d27",
+        light: "#88DCF6",
+        medium: "#15394d",
       },
     
       keyframes :{

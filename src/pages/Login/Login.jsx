@@ -39,8 +39,7 @@ function App() {
         error.response?.data?.message || error.message
       );
       alert(error.response?.data?.message || "Login failed. Please try again.");
-    }
-    finally{
+    } finally {
       setFormData({
         email: "",
         password: "",

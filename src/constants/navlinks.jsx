@@ -4,18 +4,6 @@ export const navlinks = [
     link: "/",
   },
   {
-    name: "Contact",
-    link: "/contact",
-  },
-  {
-    name: "Instructions",
-    link: "/instructions",
-  },
-  {
-    name: "Login",
-    link: "/login",
-  },
-  {
     name: "Market",
     link: "/market",
   },
@@ -23,8 +11,22 @@ export const navlinks = [
     name: "Profile",
     link: "/profile",
   },
+
+  {
+    name: "Instructions",
+    link: "/instructions",
+  },
+
   {
     name: "Rules",
     link: "/rules",
+  },
+  {
+    name: "Contact",
+    link: "/contact",
+  },
+  {
+    name: "Login",
+    link: "/login",
   },
 ];

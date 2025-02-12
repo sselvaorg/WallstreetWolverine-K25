@@ -1,5 +1,6 @@
 import Navbar from "../../components/Navbar/Navbar";
-import { vid, wolf } from "./Components/vid";
+import { wolf } from "./Components/vid";
+import bg from "/background/background.mp4";
 // import { useState } from "react";
 import PropTypes from "prop-types";
 
@@ -55,15 +56,12 @@ export default function Home() {
     "text-[120px] max-sm:text-[40px] max-lg:text-[80px] relative font-semibold max-sm:font-bold animate-movecenter2 text-white";
 
   return (
-    <div
-      className="h-screen w-full flex flex-col items-center justify-center overflow-hidden m-0 overflow-x-hidden overflow-y-auto"
-      // onMouseMove={handleMouseChange}
-    >
+    <div className="h-screen w-full flex flex-col items-center justify-center overflow-hidden m-0 overflow-x-hidden overflow-y-auto">
       <div className="fixed top-0 left-0 w-full z-50">
         <Navbar />
       </div>
       <video
-        src={vid}
+        src={bg}
         autoPlay
         loop
         muted
