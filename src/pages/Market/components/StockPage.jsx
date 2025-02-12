@@ -68,12 +68,17 @@ function StockPage() {
       : `http://localhost:5000/sellStock/${name}/${price}/${stockCount}`;
 
     try {
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: `${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await axios.post(
+        url,
+        { desc: desc },
+        {
+          headers: {
+            authorization: `${localStorage.getItem("token")}`,
+          },
+        }
+      );
       alert(`Stock has been ${isBuying ? "bought" : "sold"} at $${price}`);
+      console.log("buy/sell response:", response);
     } catch (error) {
       console.error(
         `Can't ${isBuying ? "buy" : "sell"} the stock:`,
