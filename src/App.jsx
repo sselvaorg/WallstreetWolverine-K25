@@ -18,7 +18,7 @@ export default function App() {
     <Router>
       <Suspense
         fallback={
-          <div className="flex justify-center items-center h-screen">
+          <div className="flex justify-center items-center h-screen bg-medium">
             <BounceLoader color="#88DCF6" size={80} />
           </div>
         }
