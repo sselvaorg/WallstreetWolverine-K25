@@ -13,11 +13,11 @@ export default function Rules() {
         <div className="backdrop-blur-xl p-6 rounded-lg shadow-md max-w-6xl bg-light/40 max-h-[500px] overflow-y-scroll">
           <ul className="flex  flex-col space-y-7 text-lg font-semibold text-dark">
             {instructions.map((rule, index) => (
-              <li key={index} className="flex items-start space-x-2">
+              <li key={index} className="flex items-start space-x-2 ">
                 <span className={`${rule.color} flex font-bold top-0`}>
                   {rule.icon}
                 </span>
-                <p className="flex">{rule.text}</p>
+                <p className="flex !font-sm text-gray-100 !font-semibold">{rule.text}</p>
               </li>
             ))}
           </ul>

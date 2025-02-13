@@ -88,6 +88,10 @@ function StockPage() {
           `Stock ${isBuying ? "purchase" : "sale"} failed. Please try again.`
       );
     }
+    finally
+    {
+      handleCloseModal();
+    }
   };
 
   return (

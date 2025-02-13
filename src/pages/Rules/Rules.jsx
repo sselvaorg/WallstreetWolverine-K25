@@ -17,7 +17,7 @@ export default function Rules() {
                 <span className={`${rule.color} flex font-bold top-0`}>
                   {rule.icon}
                 </span>
-                <p className="flex">{rule.text}</p>
+                <p className="flex !font-sm text-gray-100 !font-semibold">{rule.text}</p>
               </li>
             ))}
           </ul>

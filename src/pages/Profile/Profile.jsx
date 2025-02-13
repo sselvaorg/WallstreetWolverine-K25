@@ -24,8 +24,8 @@ export default function Profile() {
       });
 
       const { userTable, stockTable } = response.data.profile;
-      console.log("User Data:", userTable);
-      console.log("Stock Data:", stockTable);
+      // console.log("User Data:", userTable);
+      // console.log("Stock Data:", stockTable);
 
       setUserData((prevUserData) => ({
         ...prevUserData,
