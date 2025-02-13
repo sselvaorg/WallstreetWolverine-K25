@@ -5,10 +5,11 @@ import Navbar from "../../components/Navbar/Navbar";
 
 function Contact() {
   return (
-    <div className="font-sans min-h-screen bg-gray-900 text-white bg-[url('/images/b3.png')] bg-cover bg-center lg:bg-top">
+    <div className="font-sans min-h-screen w-full bg-gray-900 text-white bg-[url('/images/b3.png')] bg-cover bg-center">
       <Navbar />
-      <div className="relative flex flex-col lg:flex-row items-center justify-center gap-10 p-6">
-        <div className="w-[4/5] p-6 bg-blue-900 bg-opacity-20 backdrop-blur-md border border-opacity-30 rounded-xl shadow-md">
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-10 px-6 py-12 lg:px-20">
+        {/* Contact Form */}
+        <div className="w-full max-w-lg p-6 bg-blue-900 bg-opacity-20 backdrop-blur-md border border-opacity-30 rounded-xl shadow-md">
           <p className="text-2xl font-semibold text-center">
             How Can We Help You?
           </p>
@@ -40,13 +41,12 @@ function Contact() {
               rows="4"
             ></textarea>
 
-            <button className="mt-6 py-2 bg-white text-black font-semibold rounded-lg hover:bg-gray-300 transition">
+            <button className="mt-6 py-2 bg-[#0bfe02] text-black font-semibold rounded-lg hover:bg-gray-300 transition w-full">
               SUBMIT
             </button>
           </div>
         </div>
 
-        {/* Contact Info */}
         <div className="w-full max-w-lg p-6 bg-blue-900 bg-opacity-20 backdrop-blur-md border border-opacity-30 rounded-xl shadow-md text-center">
           <h1 className="text-2xl font-semibold">Reach Us</h1>
           <div className="flex flex-col items-center mt-4">
@@ -55,7 +55,7 @@ function Contact() {
             <p className="text-xs">An ISO 9001:2015 certified organisation</p>
           </div>
 
-          <div className="flex items-center mt-6">
+          <div className="flex items-center mt-6 text-sm text-center lg:text-left">
             <img
               src={location}
               className="w-6 h-6 bg-blue-800 rounded-full mr-2"
@@ -65,8 +65,8 @@ function Contact() {
           </div>
 
           <h1 className="text-2xl font-semibold mt-6">Contact Us</h1>
-          <div className="mt-4 space-y-2">
-            <p className="flex items-center">
+          <div className="mt-4 space-y-2 text-sm">
+            <p className="flex items-center justify-center lg:justify-start">
               <img
                 src={telephoneImage}
                 className="w-5 h-5 bg-blue-800 rounded-full mr-2"
@@ -74,7 +74,7 @@ function Contact() {
               />
               Bava Viknesh R M G - +91 86102 44383
             </p>
-            <p className="flex items-center">
+            <p className="flex items-center justify-center lg:justify-start">
               <img
                 src={telephoneImage}
                 className="w-5 h-5 bg-blue-800 rounded-full mr-2"

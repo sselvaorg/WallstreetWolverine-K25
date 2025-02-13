@@ -125,7 +125,7 @@ export default function Navbar() {
               animate="open"
               exit="closed"
               variants={sidebarVariants}
-              className="fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-gray-900 to-gray-800 shadow-lg sm:hidden border-r border-gray-700"
+              className="fixed top-0 left-0 h-full z-[999999] w-64 bg-gradient-to-b from-gray-900 to-gray-800 shadow-lg sm:hidden border-r border-gray-700"
             >
               <div className="flex flex-col w-full">
                 <motion.div
