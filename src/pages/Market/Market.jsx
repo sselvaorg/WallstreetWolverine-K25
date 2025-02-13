@@ -22,7 +22,7 @@ function Market() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center bg-[url('src/pages/Market/components/bear.jpg')] bg-cover bg-center lg:bg-top custom-scrollbar">
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center bg-[url('/images/bear.jpg')] bg-cover bg-center lg:bg-top custom-scrollbar">
       <Navbar />
       <div className="w-full flex flex-col items-center px-4 md:px-8 lg:px-16 xl:px-24 pb-5">
         <h1 className="text-3xl font-bold text-center mt-16 mb-8">Market</h1>
