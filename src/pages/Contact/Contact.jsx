@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar/Navbar";
 
 function Contact() {
   return (
-    <div className="font-sans min-h-screen bg-gray-900 text-white bg-[url('src/pages/Contact/components/b3.png')] bg-cover bg-center lg:bg-top">
+    <div className="font-sans min-h-screen bg-gray-900 text-white bg-[url('/images/b3.png')] bg-cover bg-center lg:bg-top">
       <Navbar />
       <div className="relative flex flex-col lg:flex-row items-center justify-center gap-10 p-6">
         <div className="w-[4/5] p-6 bg-blue-900 bg-opacity-20 backdrop-blur-md border border-opacity-30 rounded-xl shadow-md">

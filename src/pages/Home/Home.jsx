@@ -28,7 +28,7 @@ export default function Home() {
     "text-[120px] max-sm:text-[40px] max-lg:text-[80px] relative font-semibold max-sm:font-bold animate-movecenter2 text-light";
 
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-center overflow-hidden m-0 overflow-x-hidden overflow-y-auto bg-[url('src/pages/Home/components/b1.jpg')] bg-cover bg-center lg:bg-top">
+    <div className="h-screen w-full flex flex-col items-center justify-center overflow-hidden m-0 overflow-x-hidden overflow-y-auto bg-[url('/images/b1.jpg')] bg-cover bg-center lg:bg-top">
       <div className="fixed top-0 left-0 w-full z-50">
         <Navbar />
       </div>

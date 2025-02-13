@@ -91,6 +91,8 @@ function StockPage() {
     finally
     {
       handleCloseModal();
+      setDesc("");
+      setStockCount(1);
     }
   };
 

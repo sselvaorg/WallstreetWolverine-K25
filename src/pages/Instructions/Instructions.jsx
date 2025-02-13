@@ -4,7 +4,7 @@ import { instructions } from "../../constants/rulesAndInstructions";
 export default function Rules() {
   return (
     <div className="relative min-h-screen selection:bg-transparent selection:text-white custom-scrollbar overflow-hidden">
-      <div className="absolute inset-0 bg-[url('src/pages/Instructions/components/b2.png')]  bg-cover bg-center opacity-100 -z-10"></div>
+      <div className="absolute inset-0 bg-[url('/images/b2.png')]  bg-cover bg-center opacity-100 -z-10"></div>
       <Navbar />
       <section className="flex flex-col items-center py-12 px-6">
         <h1 className="text-4xl font-extrabold text-red-600 tracking-wider mb-8">
