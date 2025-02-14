@@ -1,11 +1,15 @@
 import { useState } from "react";
 import axios from "axios";
 import Navbar from "../../components/Navbar/Navbar";
-import bgVideo from "./components/background.mp4";
 import SplitText from "./components/SplitText";
 import StarBorder from "./components/StarBorder";
+import styles from "../../components/FloatingSquares/FloatingSquares.module.css";
 
-function App() {
+const FloatingSquare = ({ index }) => {
+  return <div className={styles.square} />;
+};
+
+function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -30,8 +34,6 @@ function App() {
       );
       console.log("Login Successful:", response.data);
       alert("Login Successful!");
-
-      // Store JWT token in local storage (for authentication)
       localStorage.setItem("token", response.data.token);
     } catch (error) {
       console.error(
@@ -48,80 +50,97 @@ function App() {
   };
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden">
+    <div className="relative w-full min-h-screen overflow-hidden bg-[url('/images/b3.png')] bg-cover bg-center">
+      <style>{`
+        @keyframes moveUpDown {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-40px);
+          }
+        }
+
+        @keyframes moveLeftRight {
+          0%, 100% {
+            transform: translateX(0);
+          }
+          50% {
+            transform: translateX(40px);
+          }
+        }
+      `}</style>
+
       <Navbar />
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        src={bgVideo}
-        autoPlay
-        loop
-        muted
-      ></video>
-
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-10 z-0"></div>
-
       <div className="relative z-10">
         <div className="flex justify-center items-center min-h-screen">
-          <div className="w-[80%] lg:w-full max-w-sm sm:max-w-md bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-lg shadow-lg border border-white border-opacity-20">
-            <div className="flex justify-center items-center mb-6">
-              <SplitText
-                text="Login Here!"
-                className="text-2xl font-semibold text-center"
-                delay={150}
-                animationFrom={{
-                  opacity: 0,
-                  transform: "translate3d(0,50px,0)",
-                }}
-                animationTo={{
-                  opacity: 1,
-                  transform: "translate3d(0,0,0)",
-                }}
-                easing="easeOutCubic"
-                threshold={0.2}
-                rootMargin="-50px"
-                onLetterAnimationComplete={handleAnimationComplete}
-              />
-            </div>
+          <div className="relative w-[80%] lg:w-full max-w-sm sm:max-w-md">
+            {[0, 1, 2, 3, 4, 5].map((index) => (
+              <FloatingSquare key={index} index={index} />
+            ))}
 
-            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-              <input
-                type="email"
-                name="email"
-                placeholder="Mail"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-                required
-              />
+            <div className="relative z-10 bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-lg shadow-lg border border-white border-opacity-20">
+              <div className="flex justify-center items-center mb-6">
+                <SplitText
+                  text="Login Here!"
+                  className="text-2xl font-semibold text-center"
+                  delay={150}
+                  animationFrom={{
+                    opacity: 0,
+                    transform: "translate3d(0,50px,0)",
+                  }}
+                  animationTo={{
+                    opacity: 1,
+                    transform: "translate3d(0,0,0)",
+                  }}
+                  easing="easeOutCubic"
+                  threshold={0.2}
+                  rootMargin="-50px"
+                  onLetterAnimationComplete={handleAnimationComplete}
+                />
+              </div>
 
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-                required
-              />
+              <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Mail"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
+                  required
+                />
 
-              <StarBorder
-                as="button"
-                type="submit"
-                className="custom-class"
-                color="cyan"
-                speed="7s"
-                loop
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-300 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
+                  required
+                />
+
+                <StarBorder
+                  as="button"
+                  type="submit"
+                  className="custom-class"
+                  color="cyan"
+                  speed="7s"
+                  loop
+                >
+                  Login
+                </StarBorder>
+              </form>
+
+              <a
+                href="https://kurukshetraceg.org.in/register"
+                className="block text-center mt-4 text-blue-300 hover:text-blue-400 hover:underline"
               >
-                Login
-              </StarBorder>
-            </form>
-
-            <a
-              href="https://kurukshetraceg.org.in/register"
-              className="block text-center mt-4 text-blue-300 hover:text-blue-400 hover:underline"
-            >
-              SIGN UP FOR K!
-            </a>
+                SIGN UP FOR K!
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -129,4 +148,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;

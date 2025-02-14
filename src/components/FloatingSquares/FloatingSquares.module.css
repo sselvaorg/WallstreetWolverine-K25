@@ -1,0 +1,91 @@
+.square {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    animation-duration: 15s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes moveUpDown {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-120px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes moveLeftRight {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(100px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .square:nth-child(1) {
+    top: -50px;
+    left: -80px;
+    width: 80px;
+    height: 80px;
+    animation: moveUpDown 15s ease-in-out infinite;
+    animation-delay: -2s;
+  }
+  
+  .square:nth-child(2) {
+    top: -30px;
+    right: -90px;
+    width: 100px;
+    height: 100px;
+    animation: moveLeftRight 17s ease-in-out infinite;
+    animation-delay: -5s;
+  }
+  
+  .square:nth-child(3) {
+    bottom: -60px;
+    left: -60px;
+    width: 70px;
+    height: 70px;
+    animation: moveUpDown 16s ease-in-out infinite;
+    animation-delay: -7s;
+  }
+  
+  .square:nth-child(4) {
+    bottom: -40px;
+    right: -100px;
+    width: 90px;
+    height: 90px;
+    animation: moveLeftRight 18s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+  
+  .square:nth-child(5) {
+    top: -20px;
+    right: -60px;
+    width: 60px;
+    height: 60px;
+    animation: moveUpDown 19s ease-in-out infinite;
+    animation-delay: -8s;
+  }
+  
+  .square:nth-child(6) {
+    top: 100px;
+    right: 60px;
+    width: 75px;
+    height: 75px;
+    animation: moveLeftRight 20s ease-in-out infinite;
+    animation-delay: -4s;
+  }

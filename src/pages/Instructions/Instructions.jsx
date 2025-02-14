@@ -3,7 +3,7 @@ import { instructions } from "../../constants/rulesAndInstructions";
 
 export default function Rules() {
   return (
-    <div className="relative min-h-screen selection:bg-transparent selection:text-white custom-scrollbar overflow-hidden">
+    <div className="relative min-h-screen selection:bg-transparent selection:text-dark custom-scrollbar overflow-hidden">
       <div className="absolute inset-0 bg-[url('/images/b2.png')]  bg-cover bg-center opacity-100 -z-10"></div>
       <Navbar />
       <section className="flex flex-col items-center py-12 px-6">
@@ -17,7 +17,9 @@ export default function Rules() {
                 <span className={`${rule.color} flex font-bold top-0`}>
                   {rule.icon}
                 </span>
-                <p className="flex !font-sm text-gray-100 !font-semibold">{rule.text}</p>
+                <p className="flex !font-sm text-gray-100 !font-semibold">
+                  {rule.text}
+                </p>
               </li>
             ))}
           </ul>

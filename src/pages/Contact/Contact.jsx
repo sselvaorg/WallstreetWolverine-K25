@@ -2,14 +2,26 @@ import telephoneImage from "./components/telephone.png";
 import location from "./components/location.png";
 import logo from "./components/logo.jpg";
 import Navbar from "../../components/Navbar/Navbar";
+import styles from "../../components/FloatingSquares/FloatingSquares.module.css";
+
+const FloatingSquare = ({ index }) => {
+  return <div className={styles.square} />;
+};
 
 function Contact() {
   return (
     <div className="font-sans min-h-screen w-full bg-gray-900 text-white bg-[url('/images/b3.png')] bg-cover bg-center">
       <Navbar />
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-10 px-6 py-12 lg:px-20">
+      <div className="relative flex flex-col lg:flex-row items-center justify-center gap-10 px-6 py-12 lg:px-20">
+        {/* Floating Squares */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[0, 1, 2, 3, 4, 5].map((index) => (
+            <FloatingSquare key={index} index={index} />
+          ))}
+        </div>
+
         {/* Contact Form */}
-        <div className="w-full max-w-lg p-6 bg-blue-900 bg-opacity-20 backdrop-blur-md border border-opacity-30 rounded-xl shadow-md">
+        <div className="relative z-10 w-full max-w-lg p-6 bg-blue-900 bg-opacity-20 backdrop-blur-md border border-opacity-30 rounded-xl shadow-md">
           <p className="text-2xl font-semibold text-center">
             How Can We Help You?
           </p>
@@ -47,7 +59,8 @@ function Contact() {
           </div>
         </div>
 
-        <div className="w-full max-w-lg p-6 bg-blue-900 bg-opacity-20 backdrop-blur-md border border-opacity-30 rounded-xl shadow-md text-center">
+        {/* Contact Information */}
+        <div className="relative z-10 w-full max-w-lg p-6 bg-blue-900 bg-opacity-20 backdrop-blur-md border border-opacity-30 rounded-xl shadow-md text-center">
           <h1 className="text-2xl font-semibold">Reach Us</h1>
           <div className="flex flex-col items-center mt-4">
             <img src={logo} className="w-16 h-20" alt="logo" />
