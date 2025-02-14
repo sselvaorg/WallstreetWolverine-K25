@@ -4,19 +4,17 @@ import bgVideo from "./components/background.mp4";
 import SplitText from "./components/SplitText";
 import StarBorder from "./components/StarBorder";
 import axios from "axios";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+const kurl = ` ${import.meta.env.VITE_KAPI_URL}/admin/check-kid-email`;
+
+let CREDS = import.meta.env.VITE_KAPI_CREDENTIALS;
+CREDS = JSON.parse(CREDS);
+//import { FaEye, FaEyeSlash } from "react-icons/fa";
 function Register() {
-  const [isPassword, setIsPassword] = useState("password");
-  const [isConfirmPassword, setIsConfirmPassword] = useState("password");
+  // const [isPassword, setIsPassword] = useState("password");
+  // const [isConfirmPassword, setIsConfirmPassword] = useState("password");
   const [formData, setFormData] = useState({
     kid: "",
-    name: "",
-    college: "",
-    dept: "",
-    phone: "",
     email: "",
-    password: "",
-    confirmPassword: "",
   });
 
   const handleAnimationComplete = () => {
@@ -36,14 +34,17 @@ function Register() {
     }
     console.log("data submitted", formData);
     try {
+      const kuser = await axios.post(
+        `${kurl}?user=${CREDS.user}&access=${CREDS.access}`,
+        { kid: formData.kid, email: formData.email }
+      );
+      //console.log("kuser:", kuser);
+      if (!kuser.data?.auth) alert("Register for Kururkshetra 2025!");
       const response = await axios.post("http://localhost:5000/user/register", {
         kid: formData.kid,
         name: formData.name,
-        college: formData.college,
-        dept: formData.dept,
         phone: formData.phone,
         email: formData.email,
-        password: formData.password,
       });
 
       console.log("Registration Success:", response.data);
@@ -55,13 +56,7 @@ function Register() {
     } finally {
       setFormData({
         kid: "",
-        name: "",
-        college: "",
-        dept: "",
-        phone: "",
         email: "",
-        password: "",
-        confirmPassword: "",
       });
     }
   };
@@ -110,47 +105,6 @@ function Register() {
                 required
               />
 
-              <input
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-                required
-              />
-
-              <input
-                type="text"
-                name="college"
-                placeholder="College"
-                value={formData.college}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-                required
-              />
-
-              <input
-                type="text"
-                name="dept"
-                placeholder="Department"
-                value={formData.dept}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-                required
-              />
-
-              <input
-                type="tel"
-                name="phone"
-                placeholder="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                pattern="[0-9]{10}"
-                title="Enter a valid 10-digit phone number"
-                className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-                required
-              />
 
               <input
                 type="email"
@@ -161,54 +115,6 @@ function Register() {
                 className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
                 required
               />
-
-              <div className="flex items-center border border-gray-100">
-                <input
-                  type={isPassword}
-                  name="password"
-                  placeholder="Password"
-                  onChange={handleChange}
-                  value={formData.password}
-                  className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-                  required
-                />
-                <span
-                  className="p-3 text-2xl bg-white opacity-75 cursor-pointer"
-                  onClick={() =>
-                    setIsPassword((prev) =>
-                      prev === "password" ? "text" : "password"
-                    )
-                  }
-                >
-                  {isPassword === "password" ? <FaEye /> : <FaEyeSlash />}
-                </span>
-              </div>
-
-              <div className="flex items-center border border-gray-100">
-                <input
-                  type={isConfirmPassword}
-                  name="confirmPassword"
-                  placeholder="Confirm Password"
-                  onChange={handleChange}
-                  value={formData.confirmPassword}
-                  className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-                  required
-                />
-                <span
-                  className="p-3 text-2xl bg-white opacity-75 cursor-pointer"
-                  onClick={() =>
-                    setIsConfirmPassword((prev) =>
-                      prev === "password" ? "text" : "password"
-                    )
-                  }
-                >
-                  {isConfirmPassword === "password" ? (
-                    <FaEye />
-                  ) : (
-                    <FaEyeSlash />
-                  )}
-                </span>
-              </div>
 
               <StarBorder
                 as="button"
@@ -223,7 +129,7 @@ function Register() {
             </form>
 
             <a
-              href="#"
+              href="/login"
               className="block text-center mt-4 text-blue-300 hover:text-blue-400 hover:underline"
             >
               Already have an account? Login here!

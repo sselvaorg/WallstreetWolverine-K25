@@ -2,8 +2,50 @@ import telephoneImage from "./components/telephone.png";
 import location from "./components/location.png";
 import logo from "./components/logo.jpg";
 import Navbar from "../../components/Navbar/Navbar";
-
+import { useState } from "react";
+import axios from "axios";
+const kurl = ` ${import.meta.env.VITE_KAPI_URL}/mail/query`;
 function Contact() {
+  const [formData, setFormData] = useState({
+    email: "",
+    name: "",
+    query: "",
+    mobile: "",
+  });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Submitting form:", formData);
+
+    try {
+      const kquery = await axios.post(`${kurl}`, {
+        name: formData.name,
+        email: formData.email,
+        query: formData.query,
+        mobile: formData.mobile,
+      });
+      console.log("Query:", kquery.data);
+      alert(kquery.data.message);
+    } catch (error) {
+      console.error(
+        "Query submission Failed:",
+        error.response?.data?.message || error.message
+      );
+      alert(
+        error.response?.data?.message ||
+          "Query submission failed. Please try again."
+      );
+    } finally {
+      // setFormData({
+      //   email: "",
+      //   name: "",
+      //   query: "",
+      //   mobile: "",
+      // });
+    }
+  };
   return (
     <div className="font-sans min-h-screen w-full bg-gray-900 text-white bg-[url('/images/b3.png')] bg-cover bg-center">
       <Navbar />
@@ -18,18 +60,36 @@ function Contact() {
               Your Name:
             </label>
             <input
-              className="bg-gray-700 p-2 rounded-md outline-none focus:ring-2 focus:ring-blue-500"
               type="text"
-              id="name"
+              name="name"
+              placeholder="Full Name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
+              required
             />
 
             <label className="font-semibold mt-4 mb-1" htmlFor="email">
               Your Email:
             </label>
             <input
-              className="bg-gray-700 p-2 rounded-md outline-none focus:ring-2 focus:ring-blue-500"
               type="email"
-              id="email"
+              name="email"
+              placeholder="Mail"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
+            />
+            <label className="font-semibold mt-4 mb-1" htmlFor="email">
+              Your Mobile:
+            </label>
+            <input
+              type="tel"
+              name="mobile"
+              placeholder="Mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
             />
 
             <label className="font-semibold mt-4 mb-1" htmlFor="message">
@@ -39,9 +99,17 @@ function Contact() {
               className="bg-gray-700 p-2 rounded-md outline-none focus:ring-2 focus:ring-blue-500 resize-none"
               id="message"
               rows="4"
+              type="text"
+              name="query"
+              placeholder="Enter your query here"
+              value={formData.query}
+              onChange={handleChange}
             ></textarea>
 
-            <button className="mt-6 py-2 bg-[#0bfe02] text-black font-semibold rounded-lg hover:bg-gray-300 transition w-full">
+            <button
+              className="mt-6 py-2 bg-[#0bfe02] text-black font-semibold rounded-lg hover:bg-gray-300 transition w-full"
+              onClick={handleSubmit}
+            >
               SUBMIT
             </button>
           </div>

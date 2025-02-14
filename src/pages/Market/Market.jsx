@@ -20,7 +20,6 @@ function Market() {
   const handleStockClick = (name) => {
     navigate(`/stock/${name}`);
   };
-
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center bg-[url('/images/bear.jpg')] bg-cover bg-center lg:bg-top custom-scrollbar">
       <Navbar />

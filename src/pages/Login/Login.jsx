@@ -5,6 +5,8 @@ import bgVideo from "./components/background.mp4";
 import SplitText from "./components/SplitText";
 import StarBorder from "./components/StarBorder";
 
+const kurl = ` ${import.meta.env.VITE_KAPI_URL}/auth/login`;
+
 function App() {
   const [formData, setFormData] = useState({
     email: "",
@@ -24,15 +26,31 @@ function App() {
     console.log("Submitting form:", formData);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/user/login",
-        formData
-      );
-      console.log("Login Successful:", response.data);
-      alert("Login Successful!");
+      const klogin = await axios.post(`${kurl}`, {
+        email: formData.email,
+        pwd: formData.password,
+      });
+      console.log("klogin:", klogin.data);
+      alert(klogin.data.message);
+      let firstTimeLogin = localStorage.getItem("login");
+      if (!firstTimeLogin) {
+        localStorage.setItem("login", "1");
+        const response = await axios.post("http://localhost:5000/user/login", {
+          kid: klogin.data.user.kid,
+          firstname: klogin.data.user.firstname,
+          lastname: klogin.data.user.lastname,
+          email: klogin.data.user.email,
+          phone: klogin.data.user.phone,
+          college: klogin.data.user.college,
+          year: klogin.data.user.year,
+          dept: klogin.data.user.dept,
+          roll: klogin.data.user.roll,
+        });
 
-      // Store JWT token in local storage (for authentication)
-      localStorage.setItem("token", response.data.token);
+        console.log(response);
+      }
+      //console.log(klogin.data.message);
+      localStorage.setItem("token", klogin.data.token);
     } catch (error) {
       console.error(
         "Login Failed:",
@@ -91,7 +109,6 @@ function App() {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-                required
               />
 
               <input
@@ -101,7 +118,6 @@ function App() {
                 value={formData.password}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-                required
               />
 
               <StarBorder
