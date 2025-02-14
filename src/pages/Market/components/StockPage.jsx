@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { stocks } from "../../../constants/market";
@@ -15,7 +15,7 @@ function StockPage() {
   const [stockCount, setStockCount] = useState(1);
   const [isBuying, setIsBuying] = useState(true);
   const [desc, setDesc] = useState("");
-  const [balance,setBalance] = useState(100000);
+  const [balance, setBalance] = useState(100000);
 
   if (!stock) {
     return <h2 className="text-white text-center text-2xl">Stock not found</h2>;
@@ -68,8 +68,8 @@ function StockPage() {
     }
   };
   useEffect(() => {
-      fetchDetails();
-    }, []);
+    fetchDetails();
+  }, []);
 
   const handleTransaction = async (e) => {
     e.preventDefault();
@@ -104,9 +104,7 @@ function StockPage() {
         error.response?.data?.message ||
           `Stock ${isBuying ? "purchase" : "sale"} failed. Please try again.`
       );
-    }
-    finally
-    {
+    } finally {
       handleCloseModal();
       setDesc("");
       setStockCount(1);

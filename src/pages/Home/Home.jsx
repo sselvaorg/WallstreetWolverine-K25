@@ -1,3 +1,4 @@
+import Loader from "../../components/Loader/Loader";
 import Navbar from "../../components/Navbar/Navbar";
 import PropTypes from "prop-types";
 
@@ -32,6 +33,7 @@ export default function Home() {
       <div className="fixed top-0 left-0 w-full z-50">
         <Navbar />
       </div>
+      <Loader />
 
       <div className="flex flex-col gap-[15px] max-w-full">
         <div className="flex flex-row gap-[15px] max-sm:gap-[10px] justify-center animate-rDiv">
@@ -57,12 +59,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-
-      {/* <img
-        src={wolf}
-        className="h-[180px] max-sm:h-[140px] mt-[20px]"
-        alt="Wolf Image"
-      /> */}
     </div>
   );
 }
