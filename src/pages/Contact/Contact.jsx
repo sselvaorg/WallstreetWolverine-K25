@@ -38,12 +38,12 @@ function Contact() {
           "Query submission failed. Please try again."
       );
     } finally {
-      // setFormData({
-      //   email: "",
-      //   name: "",
-      //   query: "",
-      //   mobile: "",
-      // });
+      setFormData({
+        email: "",
+        name: "",
+        query: "",
+        mobile: "",
+      });
     }
   };
   return (

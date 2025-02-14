@@ -33,8 +33,8 @@ function App() {
       console.log("klogin:", klogin.data);
       alert(klogin.data.message);
       let firstTimeLogin = localStorage.getItem("login");
-      if (!firstTimeLogin) {
-        localStorage.setItem("login", "1");
+      if (!firstTimeLogin || firstTimeLogin !== formData.email) {
+        localStorage.setItem("login", `${formData.email}`);
         const response = await axios.post("http://localhost:5000/user/login", {
           kid: klogin.data.user.kid,
           firstname: klogin.data.user.firstname,
