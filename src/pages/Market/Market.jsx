@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { stocks } from "../../constants/market";
 import useServerTime from "./components/UseServerTime";
+import axios from "axios";
 
 function Market() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ function Market() {
 
   const [newsPage, setNewsPage] = useState(1);
   const [stocksPage, setStocksPage] = useState(1);
+  const [balance,setBalance] = useState(0);
 
   const totalNewsPages = Math.ceil(stocks.length / newsPerPage);
   const totalStocksPages = Math.ceil(stocks.length / itemsPerPage);
@@ -20,12 +22,31 @@ function Market() {
   const handleStockClick = (name) => {
     navigate(`/stock/${name}`);
   };
+  const fetchDetails = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/stock/wallet", {
+        headers: {
+          authorization: `${localStorage.getItem("token")}`,
+        },
+      });
+
+      setBalance(response.data.wallet);
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+    }
+  };
+  useEffect(() => {
+      fetchDetails();
+    }, []);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center bg-[url('/images/bear.jpg')] bg-cover bg-center lg:bg-top custom-scrollbar">
       <Navbar />
       <div className="w-full flex flex-col items-center px-4 md:px-8 lg:px-16 xl:px-24 pb-5">
         <h1 className="text-3xl font-bold text-center mt-16 mb-8">Market</h1>
+        <div className="bg-light/20 p-6 rounded-lg shadow-lg backdrop-blur-lg text-2xl font-bold mb-4 text-center">BALANCE 
+          <div className="mt-4 text-center">{balance}</div>
+        </div>
         <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-light/20 p-6 rounded-lg shadow-lg backdrop-blur-lg">
             <h2 className="text-2xl font-bold mb-4 text-center">News</h2>
