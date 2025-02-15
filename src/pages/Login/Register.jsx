@@ -27,7 +27,7 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log("data submitted", formData);
+    console.log("data submitted", formData);
     try {
       const kuser = await axios.post(
         `${kurl}?user=${CREDS.user}&access=${CREDS.access}`,
@@ -89,7 +89,7 @@ function Register() {
               <input
                 type="text"
                 name="kid"
-                placeholder="KID"
+                placeholder="Enter your K! ID"
                 value={formData.kid}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
@@ -99,7 +99,7 @@ function Register() {
               <input
                 type="email"
                 name="email"
-                placeholder="Email"
+                placeholder="Enter your K25! Email"
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
