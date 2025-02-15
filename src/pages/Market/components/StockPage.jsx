@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { stocks } from "../../../constants/market";
@@ -15,6 +15,7 @@ function StockPage() {
   const [stockCount, setStockCount] = useState(1);
   const [isBuying, setIsBuying] = useState(true);
   const [desc, setDesc] = useState("");
+  const [balance, setBalance] = useState(100000);
 
   if (!stock) {
     return <h2 className="text-white text-center text-2xl">Stock not found</h2>;
@@ -53,6 +54,22 @@ function StockPage() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+  const fetchDetails = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/stock/wallet", {
+        headers: {
+          authorization: `${localStorage.getItem("token")}`,
+        },
+      });
+
+      setBalance(response.data.wallet);
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+    }
+  };
+  useEffect(() => {
+    fetchDetails();
+  }, []);
 
   const handleTransaction = async (e) => {
     e.preventDefault();
@@ -87,9 +104,7 @@ function StockPage() {
         error.response?.data?.message ||
           `Stock ${isBuying ? "purchase" : "sale"} failed. Please try again.`
       );
-    }
-    finally
-    {
+    } finally {
       handleCloseModal();
       setDesc("");
       setStockCount(1);
@@ -106,7 +121,10 @@ function StockPage() {
           </h1>
           <div className="bg-[#29293d] p-5 rounded-lg shadow-lg mt-5">
             <h2 className="text-[#64a0df] text-3xl font-bold text-center mb-5">
-              {stock.name}
+              {stock.name} : {stock.prices[0]} Kuros
+            </h2>
+            <h2 className="text-[#68df64] text-3xl font-bold text-center mb-5">
+              Your Balance : <span>{balance}</span>
             </h2>
             <div className="text-green-300">{stock.description}</div>
           </div>
@@ -137,7 +155,7 @@ function StockPage() {
               disabled={!canSell}
               title={!canSell ? "Selling not available at this time" : ""}
             >
-              Sell {canSell ? `($${sellPrice})` : "🚫"}
+              Sell {canSell ? "" : "🚫"}
             </button>
 
             <button
@@ -169,7 +187,7 @@ function StockPage() {
             Stock {isBuying ? "Purchase" : "Sale"} Details
           </h2>
           <p>Stock Name: {stock.name}</p>
-          <p>Price per Stock: ${isBuying ? buyPrice : sellPrice}</p>
+          {/* <p>Price per Stock: ${isBuying ? buyPrice : sellPrice}</p> */}
           <p>Time: {new Date().toLocaleTimeString()}</p>
           <label className="block mt-2">
             No. of Stocks:

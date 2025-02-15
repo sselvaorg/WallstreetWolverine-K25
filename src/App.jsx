@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import { BounceLoader } from "react-spinners";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import LoadingScreen from "./components/Loader/LoadingScreen";
+import Loader from "./components/Loader/Loader";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const Market = lazy(() => import("./pages/Market/Market"));
@@ -16,13 +17,7 @@ const Register = lazy(() => import("./pages/Login/Register"));
 export default function App() {
   return (
     <Router>
-      <Suspense
-        fallback={
-          <div className="flex justify-center items-center h-screen bg-medium">
-            <BounceLoader color="#88DCF6" size={80} />
-          </div>
-        }
-      >
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/market" element={<Market />} />
