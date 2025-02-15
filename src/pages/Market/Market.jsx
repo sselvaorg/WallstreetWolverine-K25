@@ -14,7 +14,7 @@ function Market() {
 
   const [newsPage, setNewsPage] = useState(1);
   const [stocksPage, setStocksPage] = useState(1);
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState("Loading...");
 
   const totalNewsPages = Math.ceil(stocks.length / newsPerPage);
   const totalStocksPages = Math.ceil(stocks.length / itemsPerPage);

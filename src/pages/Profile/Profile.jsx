@@ -53,7 +53,7 @@ export default function Profile() {
         </h1>
 
         <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-          <div className="backdrop-blur-xl text-white  p-4 sm:p-6 shadow-lg w-full self-start border border-white rounded-2xl">
+          <div className="backdrop-blur-xl bg-opacity-90 text-white  p-4 sm:p-6 shadow-lg w-full self-start border bg-[#365962]/30 border-white rounded-2xl">
             <div className="flex flex-col gap-4 sm:gap-6 ">
               {Object.entries(userData).map(([key, value], index) => (
                 <div key={index} className="flex flex-col">
@@ -70,7 +70,7 @@ export default function Profile() {
               ))}
             </div>
           </div>
-          <div className="backdrop-blur-xl text-white border border-white p-4 rounded-2xl sm:p-6 shadow-lg w-full">
+          <div className="backdrop-blur-xl text-white border border-white p-4 bg-opacity-90 bg-[#365962]/10 rounded-2xl sm:p-6 shadow-lg w-full">
             <div className="grid grid-cols-2 font-semibold text-base sm:text-lg pb-2 sm:pb-3 border-b border-gray-600">
               <span>List of Companies</span>
               <span className="text-right">Number of Stocks</span>
@@ -90,7 +90,7 @@ export default function Profile() {
                     </div>
                   ))
               ) : (
-                <p className="text-center text-md text-gray-700">
+                <p className="text-center text-md text-white">
                   No stocks found.
                 </p>
               )}

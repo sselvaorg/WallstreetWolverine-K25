@@ -7,6 +7,7 @@ export default {
     extend: {
       fontFamily:{
         euroStyle: "'EuroStyle', sans-serif",
+        crimson:"'Crimson Text',sans-serif",
       },
       colors:{
         dark: "#0b1d27",

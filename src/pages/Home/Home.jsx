@@ -24,18 +24,17 @@ const SecretDiv = ({
 
 export default function Home() {
   const textStyle1 =
-    "text-[120px] max-sm:text-[40px] max-lg:text-[80px] relative font-semibold max-sm:font-bold animate-movecenter1 text-light";
+    "text-[120px] max-sm:text-[40px] max-lg:text-[80px] relative font-semibold max-sm:font-extrabold animate-movecenter1 text-amber-400 ";
   const textStyle2 =
-    "text-[120px] max-sm:text-[40px] max-lg:text-[80px] relative font-semibold max-sm:font-bold animate-movecenter2 text-light";
+    "text-[120px] max-sm:text-[40px] max-lg:text-[80px] relative font-semibold max-sm:font-extrabold animate-movecenter2 text-amber-400 ";
 
   return (
     <div className="h-screen w-full flex flex-col items-center justify-center overflow-hidden m-0 overflow-x-hidden overflow-y-auto bg-[url('/images/b1.jpg')] bg-cover bg-center lg:bg-top">
       <div className="fixed top-0 left-0 w-full z-50">
         <Navbar />
       </div>
-      <Loader />
 
-      <div className="flex flex-col gap-[15px] max-w-full">
+      <div className="flex flex-col gap-[15px] max-w-full font-crimson">
         <div className="flex flex-row gap-[15px] max-sm:gap-[10px] justify-center animate-rDiv">
           {["W", "A", "L", "L", "S", "T", "R", "E", "E", "T"].map(
             (char, index) => (
@@ -43,7 +42,13 @@ export default function Home() {
                 key={index}
                 className={index % 2 === 0 ? textStyle1 : textStyle2}
               >
-                {char}
+                {char === "S" ? (
+                  <span className="inline-block w-[0.7em] h-[0.7em] max-sm:w-[0.9em] max-sm:h-[0.9em] flex items-center justify-center">
+                    <Loader />
+                  </span>
+                ) : (
+                  char
+                )}
               </p>
             )
           )}
@@ -54,7 +59,13 @@ export default function Home() {
               key={index}
               className={`${textStyle1} animate-movecenter3 max-sm:animate-movecenter4 max-lg:animate-movecenter5`}
             >
-              {char}
+              {char === "O" ? (
+                <span className="inline-block w-[0.7em] h-[0.7em] max-sm:w-[0.9em] max-sm:h-[0.9em] flex items-center justify-center">
+                  <Loader />
+                </span>
+              ) : (
+                char
+              )}
             </p>
           ))}
         </div>

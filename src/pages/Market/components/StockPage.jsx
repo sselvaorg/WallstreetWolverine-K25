@@ -16,7 +16,7 @@ function StockPage() {
   const [stockCount, setStockCount] = useState(1);
   const [isBuying, setIsBuying] = useState(true);
   const [desc, setDesc] = useState("");
-  const [balance, setBalance] = useState(100000);
+  const [balance, setBalance] = useState("Loading...");
   useEffect(() => {
     fetchDetails();
   }, []);

@@ -124,6 +124,12 @@ function Register() {
             >
               Already have an account? Login here!
             </a>
+            <a
+              href="https://kurukshetraceg.org.in/register"
+              className="block text-center mt-4 text-blue-300 hover:text-blue-400 hover:underline"
+            >
+              SIGN UP FOR K!
+            </a>
           </div>
         </div>
       </div>

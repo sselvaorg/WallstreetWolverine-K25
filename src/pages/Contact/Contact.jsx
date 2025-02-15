@@ -49,7 +49,7 @@ function Contact() {
   return (
     <>
       <Navbar />
-      <div className="flex font-sans min-h-screen justify-center items-center w-full bg-gray-900 text-white bg-[url('/images/b3.png')] bg-cover bg-center">
+      <div className="flex font-sans min-h-screen justify-center items-center w-full bg-gray-900 text-white bg-[url('/images/BlueBull.png')] bg-cover bg-center">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-10 px-6 py-12 lg:px-20 w-full h-full">
           <div className="w-full max-w-lg p-6 bg-blue-900 bg-opacity-20 backdrop-blur-md border border-opacity-30 rounded-xl shadow-md">
             <p className="text-2xl font-semibold text-center">
@@ -65,7 +65,7 @@ function Contact() {
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
+                className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
                 required
               />
 
@@ -107,7 +107,7 @@ function Contact() {
               ></textarea>
 
               <button
-                className="mt-6 py-2 bg-[#0bfe02] text-black font-semibold rounded-lg hover:bg-gray-300 transition w-full"
+                className="mt-6 py-2 bg-[#0367d6] text-black font-semibold rounded-lg hover:bg-gray-300 transition w-full"
                 onClick={handleSubmit}
               >
                 SUBMIT
@@ -118,7 +118,7 @@ function Contact() {
           <div className="w-full max-w-lg p-6 bg-blue-900 bg-opacity-20 backdrop-blur-md border border-opacity-30 rounded-xl shadow-md text-center">
             <h1 className="text-2xl font-semibold">Reach Us</h1>
             <div className="flex flex-col items-center mt-4">
-              <span className="bg-[#0bfe02] rounded-full justify-center items-center flex">
+              <span className="bg-[#0367d6] rounded-full justify-center items-center flex">
                 <img src={logo} className="flex w-16 h-20" alt="logo" />
               </span>
               <p className="text-xl font-semibold mt-2">CEG TechForum</p>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import image from "/images/K_25_Logo.png";
 import { navLinks, isAuthenticated } from "../../constants/navlinks";
@@ -119,7 +119,7 @@ export default function Navbar() {
         {navLinks(auth).map(
           (link, i) =>
             link && (
-              <Link
+              <NavLink
                 key={i}
                 to={link.link}
                 onClick={(e) => {
@@ -128,10 +128,17 @@ export default function Navbar() {
                     logout();
                   }
                 }}
-                className="block py-3 text-gray-100 hover:text-blue-300 font-medium"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 py-3 font-medium transition-transform duration-300 ease-in-out hover:scale-110 ${
+                    isActive
+                      ? "text-blue-400"
+                      : "text-gray-100 hover:text-blue-300"
+                  }`
+                }
               >
+                {link.icon}
                 {link.name}
-              </Link>
+              </NavLink>
             )
         )}
       </div>
@@ -176,7 +183,7 @@ export default function Navbar() {
                           animate="open"
                           className="w-full"
                         >
-                          <Link
+                          <NavLink
                             to={link.link}
                             onClick={(e) => {
                               if (link.name === "Logout") {
@@ -184,10 +191,17 @@ export default function Navbar() {
                                 logout();
                               }
                             }}
-                            className="block py-3 text-gray-100 hover:text-blue-300 font-medium"
+                            className={({ isActive }) =>
+                              `flex items-center gap-2 py-3 font-medium transition-transform duration-300 ease-in-out hover:scale-110 ${
+                                isActive
+                                  ? "text-blue-400"
+                                  : "text-gray-100 hover:text-blue-300"
+                              }`
+                            }
                           >
+                            {link.icon}
                             {link.name}
-                          </Link>
+                          </NavLink>
                         </motion.div>
                       )
                   )}

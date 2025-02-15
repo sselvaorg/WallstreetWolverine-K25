@@ -1,7 +1,7 @@
 
 
 .coin {
-  font-size: 200px;
+  font-size: 1em;
   width: 0.1em;
   height: 1em;
   background: linear-gradient(#b38f06, #725505);
@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  animation: rotate 4s infinite linear;
+  animation: rotate 2s infinite linear;
   transform-style: preserve-3d;
 }
 
@@ -28,9 +28,9 @@
   right: calc(-1em / 2 + 0.1em);
   text-align: center;
   line-height: 1;
-  color: #c5a906;
+  color: #065cc5;
   text-shadow:
-    1px 2px 0 #f5e1a3,
+    1px 2px 0 #a3dff5,
     -1px -2px 0 #8d6f03;
   transform: rotateY(-90deg);
   backface-visibility: hidden;
@@ -56,5 +56,17 @@
 @keyframes rotate {
   100% {
     transform: rotateY(360deg);
+  }
+}
+
+@media (max-width: 1024px) {
+  .coin {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 640px) {
+  .coin {
+    font-size: 0.9em;
   }
 }

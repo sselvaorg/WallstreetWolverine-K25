@@ -136,10 +136,10 @@ function Login() {
             </form>
 
             <a
-              href="https://kurukshetraceg.org.in/register"
+              href="/register"
               className="block text-center mt-4 text-blue-300 hover:text-blue-400 hover:underline"
             >
-              SIGN UP FOR K!
+              REGISTER HERE
             </a>
           </div>
         </div>
