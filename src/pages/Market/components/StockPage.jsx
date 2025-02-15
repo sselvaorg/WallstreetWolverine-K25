@@ -16,6 +16,9 @@ function StockPage() {
   const [isBuying, setIsBuying] = useState(true);
   const [desc, setDesc] = useState("");
   const [balance, setBalance] = useState(100000);
+  useEffect(() => {
+    fetchDetails();
+  }, []);
 
   if (!stock) {
     return <h2 className="text-white text-center text-2xl">Stock not found</h2>;
@@ -67,9 +70,6 @@ function StockPage() {
       console.error("Error fetching profile:", error);
     }
   };
-  useEffect(() => {
-    fetchDetails();
-  }, []);
 
   const handleTransaction = async (e) => {
     e.preventDefault();
@@ -121,7 +121,7 @@ function StockPage() {
           </h1>
           <div className="bg-[#29293d] p-5 rounded-lg shadow-lg mt-5">
             <h2 className="text-[#64a0df] text-3xl font-bold text-center mb-5">
-              {stock.name} : {stock.prices[0]} Kuros
+              {stock.name} : {stock.prices[0]} Kuros per Stock
             </h2>
             <h2 className="text-[#68df64] text-3xl font-bold text-center mb-5">
               Your Balance : <span>{balance}</span>
@@ -204,7 +204,7 @@ function StockPage() {
             <input
               type="text"
               value={desc}
-              placeholder="Enter your Description"
+              placeholder="Justify your action in few words"
               onChange={(e) => setDesc(e.target.value)}
               className="border p-2 rounded w-full mt-1 bg-gray-200 text-black"
               required

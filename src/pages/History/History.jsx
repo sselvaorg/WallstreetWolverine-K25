@@ -129,19 +129,19 @@ function History() {
             >
               <th
                 colSpan={1}
-                className="text-md sm:text-lg font-medium w-[30%] text-center text-[#0184ffe5]"
+                className="text-md sm:text-lg font-medium w-[30%] text-center text-[#ff0000e5]"
               >
                 Company
               </th>
               <th
                 colSpan={1}
-                className="text-md sm:text-lg font-medium w-[30%] text-center text-[#0184ffe5]"
+                className="text-md sm:text-lg font-medium w-[30%] text-center text-[#ff0000e5]"
               >
                 Quantity
               </th>
               <th
                 colSpan={1}
-                className="text-md sm:text-lg font-medium w-[30%] text-center text-[#0184ffe5]"
+                className="text-md sm:text-lg font-medium w-[30%] text-center text-[#ff0000e5]"
               >
                 Flag
               </th>

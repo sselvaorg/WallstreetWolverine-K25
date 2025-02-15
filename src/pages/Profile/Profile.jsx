@@ -6,8 +6,8 @@ export default function Profile() {
   const [userData, setUserData] = useState({
     "K! ID": "",
     Name: "",
-    // College: "",
-    // Department: "",
+    College: "",
+    Department: "",
     Phone:"",
     Email: "",
   });
