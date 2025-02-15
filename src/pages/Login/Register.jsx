@@ -42,8 +42,8 @@ function Register() {
       if (!kuser.data?.auth) alert("Register for Kururkshetra 2025!");
       const response = await axios.post("http://localhost:5000/user/register", {
         kid: formData.kid,
-        name: formData.name,
-        phone: formData.phone,
+        // name: formData.name,
+        // phone: formData.phone,
         email: formData.email,
       });
 

@@ -55,7 +55,7 @@ export default function App() {
           }
           <Route
             path="/register"
-            element={!isAuthenticated() ? <Register /> : <Home />}
+            element={<Register />}
           />
 
           <Route
