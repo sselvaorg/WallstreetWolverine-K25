@@ -115,6 +115,7 @@ function StockPage() {
       handleCloseModal();
       setDesc("");
       setStockCount(1);
+      fetchDetails();
     }
   };
 
