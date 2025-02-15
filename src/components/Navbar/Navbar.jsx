@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import image from "/images/K_25_Logo.png";
-import { navlinks } from "../../constants/navlinks";
+import { navLinks, isAuthenticated } from "../../constants/navlinks";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
   const sidebarVariants = {
     closed: {
       x: "-100%",
@@ -58,7 +57,22 @@ export default function Navbar() {
     closed: { opacity: 0 },
     open: { opacity: 1 },
   };
+  const [auth, setAuth] = useState(isAuthenticated());
 
+  useEffect(() => {
+    const updateAuth = () => setAuth(isAuthenticated());
+
+    window.addEventListener("storage", updateAuth);
+
+    return () => {
+      window.removeEventListener("storage", updateAuth);
+    };
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setAuth(false);
+  };
   return (
     <nav className="flex items-center justify-between px-4 md:px-6 relative z-[999999] w-full top-0 p-3 bg-gradient-to-b from-gray-900 to-gray-800">
       <a href="https://kurukshetraceg.org.in/" target="_blank">
@@ -98,15 +112,24 @@ export default function Navbar() {
       </button>
 
       <div className="hidden sm:flex sm:items-center sm:gap-6">
-        {navlinks.map((link) => (
-          <Link
-            key={link.name}
-            to={link.link}
-            className="text-white hover:text-blue-300 font-medium transition-colors"
-          >
-            {link.name}
-          </Link>
-        ))}
+        {navLinks(auth).map(
+          (link, i) =>
+            link && (
+              <Link
+                key={i}
+                to={link.link}
+                onClick={(e) => {
+                  if (link.name === "Logout") {
+                    e.preventDefault();
+                    logout();
+                  }
+                }}
+                className="block py-3 text-gray-100 hover:text-blue-300 font-medium"
+              >
+                {link.name}
+              </Link>
+            )
+        )}
       </div>
 
       <AnimatePresence>
@@ -138,24 +161,32 @@ export default function Navbar() {
                   <img src={image} alt="Logo" className="h-10 w-auto" />
                 </motion.div>
                 <div className="flex flex-col w-full p-4">
-                  {navlinks.map((link, i) => (
-                    <motion.div
-                      key={link.name}
-                      custom={i}
-                      variants={linkVariants}
-                      initial="closed"
-                      animate="open"
-                      className="w-full"
-                    >
-                      <Link
-                        to={link.link}
-                        onClick={() => setIsOpen(false)}
-                        className="block py-3 text-gray-100 hover:text-blue-300 font-medium w-full"
-                      >
-                        {link.name}
-                      </Link>
-                    </motion.div>
-                  ))}
+                  {navLinks(auth).map(
+                    (link, i) =>
+                      link && (
+                        <motion.div
+                          key={link.name}
+                          custom={i}
+                          variants={linkVariants}
+                          initial="closed"
+                          animate="open"
+                          className="w-full"
+                        >
+                          <Link
+                            to={link.link}
+                            onClick={(e) => {
+                              if (link.name === "Logout") {
+                                e.preventDefault();
+                                logout();
+                              }
+                            }}
+                            className="block py-3 text-gray-100 hover:text-blue-300 font-medium"
+                          >
+                            {link.name}
+                          </Link>
+                        </motion.div>
+                      )
+                  )}
                 </div>
               </div>
             </motion.div>

@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
+// eslint-disable-next-line no-unused-vars
+import  { useRef } from "react";
 import styles from "./Heading.module.css";
 
+// eslint-disable-next-line react/prop-types
 function Heading({ text}) {
 
   return (

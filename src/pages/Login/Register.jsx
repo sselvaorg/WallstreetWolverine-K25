@@ -105,7 +105,6 @@ function Register() {
                 required
               />
 
-
               <input
                 type="email"
                 name="email"

@@ -5,6 +5,7 @@ import { stocks } from "../../../constants/market";
 import Navbar from "../../../components/Navbar/Navbar";
 import useServerTime from "./UseServerTime";
 import axios from "axios";
+import { isAuthenticated } from "../../../constants/navlinks";
 
 function StockPage() {
   let name = useParams().id;
@@ -72,6 +73,10 @@ function StockPage() {
   };
 
   const handleTransaction = async (e) => {
+    if (!isAuthenticated()) {
+      alert("Please login to make transactions!");
+      return;
+    }
     e.preventDefault();
     const price = isBuying ? buyPrice : sellPrice;
     if (!price) {

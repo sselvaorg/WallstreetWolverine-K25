@@ -59,37 +59,37 @@ function Contact() {
                 Your Name:
               </label>
               <input
-                  type="text"
+                type="text"
                 name="name"
                 placeholder="Full Name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-              required
-            />
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-75 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
+                required
+              />
 
-            <label className="font-semibold mt-4 mb-1" htmlFor="email">
-              Your Email:
-            </label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Mail"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-            />
-            <label className="font-semibold mt-4 mb-1" htmlFor="email">
-              Your Mobile:
-            </label>
-            <input
-              type="tel"
-              name="mobile"
-              placeholder="Mobile"
-              value={formData.mobile}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
-            />
+              <label className="font-semibold mt-4 mb-1" htmlFor="email">
+                Your Email:
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Mail"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
+              />
+              <label className="font-semibold mt-4 mb-1" htmlFor="email">
+                Your Mobile:
+              </label>
+              <input
+                type="tel"
+                name="mobile"
+                placeholder="Mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
+              />
 
               <label className="font-semibold mt-4 mb-1" htmlFor="message">
                 Your Message:
@@ -99,16 +99,16 @@ function Contact() {
                 id="message"
                 rows="4"
                 type="text"
-              name="query"
-              placeholder="Enter your query here"
-              value={formData.query}
-              onChange={handleChange}
-            ></textarea>
+                name="query"
+                placeholder="Enter your query here"
+                value={formData.query}
+                onChange={handleChange}
+              ></textarea>
 
               <button
-              className="mt-6 py-2 bg-[#0bfe02] text-black font-semibold rounded-lg hover:bg-gray-300 transition w-full"
-              onClick={handleSubmit}
-            >
+                className="mt-6 py-2 bg-[#0bfe02] text-black font-semibold rounded-lg hover:bg-gray-300 transition w-full"
+                onClick={handleSubmit}
+              >
                 SUBMIT
               </button>
             </div>

@@ -4,10 +4,12 @@ import Navbar from "../../components/Navbar/Navbar";
 import bgVideo from "./components/background.mp4";
 import SplitText from "./components/SplitText";
 import StarBorder from "./components/StarBorder";
+import { useNavigate } from "react-router-dom";
 
 const kurl = ` ${import.meta.env.VITE_KAPI_URL}/auth/login`;
 
 function App() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -62,6 +64,7 @@ function App() {
         email: "",
         password: "",
       });
+      navigate("/");
     }
   };
 

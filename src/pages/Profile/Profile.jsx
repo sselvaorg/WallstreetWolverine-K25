@@ -8,7 +8,7 @@ export default function Profile() {
     Name: "",
     College: "",
     Department: "",
-    Phone:"",
+    Phone: "",
     Email: "",
   });
 
@@ -45,7 +45,7 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[url('/images/bullbear.jpg')] bg-cover bg-center lg:bg-top opacity-100">
-      <div className="absolute inset-0 bg-black opacity-40"></div>
+      {/* <div className="absolute inset-0 bg-black opacity-40"></div> */}
       <Navbar />
       <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 ">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold z-10 rounded-xl text-white  mb-6 sm:mb-8 tracking-wide text-center">
