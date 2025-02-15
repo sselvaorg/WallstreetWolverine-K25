@@ -36,6 +36,8 @@ function Market() {
       setBalance(response.data.wallet);
     } catch (error) {
       console.error("Error fetching profile:", error);
+    } finally {
+      fetchDetails();
     }
   };
   useEffect(() => {
