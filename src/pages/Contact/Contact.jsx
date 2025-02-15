@@ -1,9 +1,9 @@
 import logo from "./components/logo.jpg";
 import Navbar from "../../components/Navbar/Navbar";
-import { MdOutlinePhoneInTalk } from "react-icons/md";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import Accordion from "../../components/Accordion/Accordion";
 const kurl = ` ${import.meta.env.VITE_KAPI_URL}/mail/query`;
 function Contact() {
   const [formData, setFormData] = useState({
@@ -129,47 +129,14 @@ function Contact() {
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.370602293092!2d80.23400506847207!3d13.012055671301153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267a207274009%3A0xad310ef6d46e1653!2sCEG%20Tech%20Forum!5e0!3m2!1sen!2sin!4v1739561499157!5m2!1sen!2sin"
                 width="100%"
-                className="rounded-lg flex w-8/9 "
+                className="rounded-lg flex lg:w-[400px] lg:h-[250px]"
                 height="100%"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
-
-            <h1 className="text-2xl font-semibold mt-6">General Inquiries</h1>
-            <div className="mt-4 space-y-2 text-sm ">
-              <span className="flex items-center justify-between bg-medium/80 rounded-lg ">
-                <p className="p-2 flex-row flex">
-                  <MdOutlinePhoneInTalk size="25px" className="pr-2" />
-                  Ragul Kailash M
-                </p>
-                <a className="hover:underline pr-2" href="tel:+91-86678-20060">
-                  +91-86678-20060
-                </a>
-              </span>
-              <span className="flex items-center justify-between bg-medium/80  rounded-lg ">
-                <p className="p-2 flex-row flex">
-                  <MdOutlinePhoneInTalk size="25px" className="pr-2" />
-                  Visvesswar A M
-                </p>
-                <a className="hover:underline pr-2" href="tel:+91-74182-43840">
-                  +91-74182-43840
-                </a>
-              </span>
-              <span className="flex items-center justify-between bg-medium/80  rounded-lg ">
-                <p className="flex-row flex p-2">
-                  <MdOutlinePhoneInTalk size="25px" className="pr-2" />
-                  Selva Ganesh S
-                </p>
-                <a
-                  className="flex hover:underline pr-2"
-                  href="tel:+91-63692-69540"
-                >
-                  +91-63692-69540
-                </a>
-              </span>
-            </div>
+            <Accordion />
           </div>
         </div>
       </div>
