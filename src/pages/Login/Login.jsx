@@ -108,7 +108,7 @@ function Login() {
               <input
                 type="email"
                 name="email"
-                placeholder="Mail"
+                placeholder="Enter your K25! Email"
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
@@ -117,7 +117,7 @@ function Login() {
               <input
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Enter your K25! Password"
                 value={formData.password}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
