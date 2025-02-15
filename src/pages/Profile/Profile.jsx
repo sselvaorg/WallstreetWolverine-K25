@@ -16,7 +16,7 @@ export default function Profile() {
   const [stockPage, setStockPage] = useState(1);
 
   const fetchDetails = async () => {
-    console.log("token", localStorage.getItem("token"));
+    //console.log("token", localStorage.getItem("token"));
     try {
       const response = await axios.get("http://localhost:5000/profile", {
         headers: {

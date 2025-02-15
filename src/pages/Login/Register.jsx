@@ -4,21 +4,21 @@ import bgVideo from "./components/background.mp4";
 import SplitText from "./components/SplitText";
 import StarBorder from "./components/StarBorder";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const kurl = ` ${import.meta.env.VITE_KAPI_URL}/admin/check-kid-email`;
 
 let CREDS = import.meta.env.VITE_KAPI_CREDENTIALS;
 CREDS = JSON.parse(CREDS);
-//import { FaEye, FaEyeSlash } from "react-icons/fa";
 function Register() {
-  // const [isPassword, setIsPassword] = useState("password");
-  // const [isConfirmPassword, setIsConfirmPassword] = useState("password");
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     kid: "",
     email: "",
   });
 
   const handleAnimationComplete = () => {
-    console.log("All letters have animated!");
+    //console.log("All letters have animated!");
   };
 
   const handleChange = (e) => {
@@ -27,32 +27,23 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-    console.log("data submitted", formData);
+    //console.log("data submitted", formData);
     try {
       const kuser = await axios.post(
         `${kurl}?user=${CREDS.user}&access=${CREDS.access}`,
         { kid: formData.kid, email: formData.email }
       );
-      //console.log("kuser:", kuser);
-      if (!kuser.data?.auth) alert("Register for Kururkshetra 2025!");
-      const response = await axios.post("http://localhost:5000/user/register", {
+      if (!kuser.data?.auth) toast("Register for Kururkshetra 2025!");
+      await axios.post("http://localhost:5000/user/register", {
         kid: formData.kid,
-        // name: formData.name,
-        // phone: formData.phone,
         email: formData.email,
       });
 
-      console.log("Registration Success:", response.data);
-
-      alert("Registration successful!");
+      toast.success("Registration successful!");
+      navigate("/login");
     } catch (error) {
       console.error("Error:", error);
-      alert("Registration failed. Try again!");
+      toast.error("Registration failed. Try again!");
     } finally {
       setFormData({
         kid: "",

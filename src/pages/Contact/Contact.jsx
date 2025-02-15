@@ -2,6 +2,7 @@ import logo from "./components/logo.jpg";
 import Navbar from "../../components/Navbar/Navbar";
 import { MdOutlinePhoneInTalk } from "react-icons/md";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import axios from "axios";
 const kurl = ` ${import.meta.env.VITE_KAPI_URL}/mail/query`;
 function Contact() {
@@ -16,7 +17,7 @@ function Contact() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting form:", formData);
+    //console.log("Submitting form:", formData);
 
     try {
       const kquery = await axios.post(`${kurl}`, {
@@ -25,14 +26,14 @@ function Contact() {
         query: formData.query,
         mobile: formData.mobile,
       });
-      console.log("Query:", kquery.data);
-      alert(kquery.data.message);
+      //console.log("Query:", kquery.data);
+      toast.success(kquery.data.message);
     } catch (error) {
       console.error(
         "Query submission Failed:",
         error.response?.data?.message || error.message
       );
-      alert(
+      toast.error(
         error.response?.data?.message ||
           "Query submission failed. Please try again."
       );

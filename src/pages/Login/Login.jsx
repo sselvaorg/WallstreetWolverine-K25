@@ -5,10 +5,10 @@ import bgVideo from "./components/background.mp4";
 import SplitText from "./components/SplitText";
 import StarBorder from "./components/StarBorder";
 import { useNavigate } from "react-router-dom";
-
+import toast from "react-hot-toast";
 const kurl = ` ${import.meta.env.VITE_KAPI_URL}/auth/login`;
 
-function App() {
+function Login() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -16,7 +16,7 @@ function App() {
   });
 
   const handleAnimationComplete = () => {
-    console.log("All letters have animated!");
+    //console.log("All letters have animated!");
   };
 
   const handleChange = (e) => {
@@ -25,19 +25,19 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting form:", formData);
+    //console.log("Submitting form:", formData);
 
     try {
       const klogin = await axios.post(`${kurl}`, {
         email: formData.email,
         pwd: formData.password,
       });
-      console.log("klogin:", klogin.data);
-      alert(klogin.data.message);
+      //console.log("klogin:", klogin.data);
+      toast.success("Login Successfull");
       let firstTimeLogin = localStorage.getItem("login");
       if (!firstTimeLogin || firstTimeLogin !== formData.email) {
         localStorage.setItem("login", `${formData.email}`);
-        const response = await axios.post("http://localhost:5000/user/login", {
+        await axios.post("http://localhost:5000/user/login", {
           kid: klogin.data.user.kid,
           firstname: klogin.data.user.firstname,
           lastname: klogin.data.user.lastname,
@@ -49,7 +49,7 @@ function App() {
           roll: klogin.data.user.roll,
         });
 
-        console.log(response);
+        //console.log(response);
       }
       //console.log(klogin.data.message);
       localStorage.setItem("token", klogin.data.token);
@@ -58,7 +58,7 @@ function App() {
         "Login Failed:",
         error.response?.data?.message || error.message
       );
-      alert(error.response?.data?.message || "Login failed. Please try again.");
+      toast.error(error.response?.data?.message || "Login failed. Please try again.");
     } finally {
       setFormData({
         email: "",
@@ -83,7 +83,7 @@ function App() {
 
       <div className="relative z-10">
         <div className="flex justify-center items-center min-h-screen">
-          <div className="w-[80%] lg:w-full max-w-sm sm:max-w-md bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-lg shadow-lg border border-white border-opacity-20">
+          <div className="w-[80%] lg:w-full max-w-sm sm:max-w-md bg-white bg-opacity-10 lg:backdrop-blur-md p-6 rounded-lg shadow-lg border border-white border-opacity-20">
             <div className="flex justify-center items-center mb-6">
               <SplitText
                 text="Login Here!"
@@ -148,4 +148,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;

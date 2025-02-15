@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Loader from "./components/Loader/Loader";
 import PropTypes from "prop-types";
-
+import { Toaster } from "react-hot-toast";
 const Home = lazy(() => import("./pages/Home/Home"));
 const Market = lazy(() => import("./pages/Market/Market"));
 const StockPage = lazy(() => import("./pages/Market/components/StockPage"));
@@ -31,6 +31,7 @@ export default function App() {
   return (
     <Router>
       <Suspense fallback={<Loader />}>
+      <Toaster position="top-right" reverseOrder={false} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/market" element={<Market />} />

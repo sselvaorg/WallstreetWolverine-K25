@@ -6,7 +6,7 @@ import Navbar from "../../../components/Navbar/Navbar";
 import useServerTime from "./UseServerTime";
 import axios from "axios";
 import { isAuthenticated } from "../../../constants/navlinks";
-
+import toast from "react-hot-toast";
 function StockPage() {
   let name = useParams().id;
   const stock = stocks.find((s) => s.name === name);
@@ -74,13 +74,13 @@ function StockPage() {
 
   const handleTransaction = async (e) => {
     if (!isAuthenticated()) {
-      alert("Please login to make transactions!");
+      toast.error("Please login to make transactions!");
       return;
     }
     e.preventDefault();
     const price = isBuying ? buyPrice : sellPrice;
     if (!price) {
-      alert(`Transaction not allowed at this time.`);
+      toast.error(`Transaction not allowed at this time.`);
       return;
     }
 
@@ -89,7 +89,7 @@ function StockPage() {
       : `http://localhost:5000/sellStock/${name}/${price}/${stockCount}`;
 
     try {
-      const response = await axios.post(
+      await axios.post(
         url,
         { desc: desc },
         {
@@ -98,14 +98,14 @@ function StockPage() {
           },
         }
       );
-      alert(`Stock has been ${isBuying ? "bought" : "sold"} at $${price}`);
-      console.log("buy/sell response:", response);
+      toast.success(`Stock has been ${isBuying ? "bought" : "sold"}`);
+      //console.log("buy/sell response:", response);
     } catch (error) {
       console.error(
         `Can't ${isBuying ? "buy" : "sell"} the stock:`,
         error.response?.data?.message || error.message
       );
-      alert(
+      toast.error(
         error.response?.data?.message ||
           `Stock ${isBuying ? "purchase" : "sale"} failed. Please try again.`
       );
