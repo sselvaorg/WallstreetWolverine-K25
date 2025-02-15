@@ -10,5 +10,5 @@ export const navLinks = (auth) => [
   { name: "Instructions", link: "/instructions" },
   { name: "Rules", link: "/rules" },
   { name: "Contact", link: "/contact" },
-  !auth ? { name: "Login", link: "/login" } : { name: "Logout", link: "#" },
+  !auth ? { name: "Login", link: "/login" } : { name: "Logout", link: "/login" },
 ];

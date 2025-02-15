@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -28,10 +28,19 @@ const ProtectedRoute = ({ element }) => {
 };
 
 export default function App() {
+  useEffect(() => {
+    isAuthenticated();
+  }, []);
   return (
     <Router>
       <Suspense fallback={<Loader />}>
-      <Toaster position="top-right" reverseOrder={false} />
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            className: "z-[99999] mt-5",
+          }}
+          reverseOrder={false}
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/market" element={<Market />} />
@@ -54,10 +63,7 @@ export default function App() {
               element={!isAuthenticated() ? <Login /> : <Home />}
             />
           }
-          <Route
-            path="/register"
-            element={<Register />}
-          />
+          <Route path="/register" element={<Register />} />
 
           <Route
             path="*"

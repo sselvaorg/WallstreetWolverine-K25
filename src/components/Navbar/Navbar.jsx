@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import image from "/images/K_25_Logo.png";
 import { navLinks, isAuthenticated } from "../../constants/navlinks";
-
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   const sidebarVariants = {
     closed: {
       x: "-100%",
@@ -71,10 +73,12 @@ export default function Navbar() {
 
   const logout = () => {
     localStorage.removeItem("token");
+    toast.success("Logged out successfully");
     setAuth(false);
+    navigate("/login");
   };
   return (
-    <nav className="flex items-center justify-between px-4 md:px-6 relative z-[999999] w-full top-0 p-3 bg-gradient-to-b from-gray-900 to-gray-800">
+    <nav className="flex items-center justify-between px-4 md:px-6 relative z-[1000] w-full top-0 p-3 bg-gradient-to-b from-gray-900 to-gray-800">
       <a href="https://kurukshetraceg.org.in/" target="_blank">
         <img src={image} alt="Logo" className="h-8 md:h-12" />
       </a>
