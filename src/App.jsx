@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,6 +8,7 @@ import {
 import Loader from "./components/Loader/Loader";
 import PropTypes from "prop-types";
 import { Toaster } from "react-hot-toast";
+
 const Home = lazy(() => import("./pages/Home/Home"));
 const Market = lazy(() => import("./pages/Market/Market"));
 const StockPage = lazy(() => import("./pages/Market/components/StockPage"));
@@ -19,18 +20,22 @@ const Contact = lazy(() => import("./pages/Contact/Contact"));
 const Login = lazy(() => import("./pages/Login/Login"));
 const Register = lazy(() => import("./pages/Login/Register"));
 
-const isAuthenticated = () => {
-  return !!localStorage.getItem("token");
-};
+const getAuthStatus = () => !!localStorage.getItem("token");
 
 const ProtectedRoute = ({ element }) => {
-  return isAuthenticated() ? element : <Navigate to="/login" replace />;
+  return getAuthStatus() ? element : <Navigate to="/login" replace />;
 };
 
 export default function App() {
+  const [, setForceRender] = useState(false);
+
   useEffect(() => {
-    isAuthenticated();
+    const handleAuthChange = () => setForceRender((prev) => !prev);
+
+    window.addEventListener("authChange", handleAuthChange);
+    return () => window.removeEventListener("authChange", handleAuthChange);
   }, []);
+
   return (
     <Router>
       <Suspense fallback={<Loader />}>
@@ -56,19 +61,15 @@ export default function App() {
             element={<ProtectedRoute element={<History />} />}
           />
           <Route path="/contact" element={<Contact />} />
-
-          {
-            <Route
-              path="/login"
-              element={!isAuthenticated() ? <Login /> : <Home />}
-            />
-          }
+          <Route
+            path="/login"
+            element={!getAuthStatus() ? <Login /> : <Navigate to="/" />}
+          />
           <Route path="/register" element={<Register />} />
-
           <Route
             path="*"
             element={
-              isAuthenticated() ? <Navigate to="/" /> : <Navigate to="/login" />
+              getAuthStatus() ? <Navigate to="/" /> : <Navigate to="/login" />
             }
           />
         </Routes>
@@ -76,6 +77,7 @@ export default function App() {
     </Router>
   );
 }
+
 ProtectedRoute.propTypes = {
   element: PropTypes.element.isRequired,
 };

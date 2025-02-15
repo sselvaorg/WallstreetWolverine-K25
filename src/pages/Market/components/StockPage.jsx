@@ -16,7 +16,9 @@ function StockPage() {
   const [stockCount, setStockCount] = useState(1);
   const [isBuying, setIsBuying] = useState(true);
   const [desc, setDesc] = useState("");
-  const [balance, setBalance] = useState("Loading...");
+  const [balance, setBalance] = useState(
+    isAuthenticated() ? "Loading..." : "Login to view Balance!"
+  );
   useEffect(() => {
     fetchDetails();
   }, []);

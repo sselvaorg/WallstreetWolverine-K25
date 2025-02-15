@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { stocks } from "../../constants/market";
 import useServerTime from "./components/UseServerTime";
 import axios from "axios";
+import { isAuthenticated } from "../../constants/navlinks";
 
 function Market() {
   const navigate = useNavigate();
@@ -14,7 +15,9 @@ function Market() {
 
   const [newsPage, setNewsPage] = useState(1);
   const [stocksPage, setStocksPage] = useState(1);
-  const [balance, setBalance] = useState("Loading...");
+  const [balance, setBalance] = useState(
+    isAuthenticated() ? "Loading..." : "Login to view Balance!"
+  );
 
   const totalNewsPages = Math.ceil(stocks.length / newsPerPage);
   const totalStocksPages = Math.ceil(stocks.length / itemsPerPage);
