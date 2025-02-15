@@ -58,7 +58,9 @@ function Login() {
         "Login Failed:",
         error.response?.data?.message || error.message
       );
-      toast.error(error.response?.data?.message || "Login failed. Please try again.");
+      toast.error(
+        error.response?.data?.message || "Login failed. Please try again."
+      );
     } finally {
       setFormData({
         email: "",
@@ -108,7 +110,7 @@ function Login() {
               <input
                 type="email"
                 name="email"
-                placeholder="Enter your K25! Email"
+                placeholder="Enter your K! 25 Email"
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-100 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
@@ -117,7 +119,7 @@ function Login() {
               <input
                 type="password"
                 name="password"
-                placeholder="Enter your K25! Password"
+                placeholder="Enter your K! 25 Password"
                 value={formData.password}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 bg-white bg-opacity-50 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 placeholder-black"
