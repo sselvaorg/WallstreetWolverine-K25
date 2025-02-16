@@ -62,11 +62,14 @@ function StockPage() {
   };
   const fetchDetails = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/stock/wallet", {
-        headers: {
-          authorization: `${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await axios.get(
+        "https://api.wsw.kurukshetraceg.org.in/stock/wallet",
+        {
+          headers: {
+            authorization: `${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       setBalance(response.data.wallet);
     } catch (error) {
@@ -87,8 +90,8 @@ function StockPage() {
     }
 
     const url = isBuying
-      ? `http://localhost:5000/buyStock/${name}/${price}/${stockCount}`
-      : `http://localhost:5000/sellStock/${name}/${price}/${stockCount}`;
+      ? `https://api.wsw.kurukshetraceg.org.in/buyStock/${name}/${price}/${stockCount}`
+      : `https://api.wsw.kurukshetraceg.org.in/sellStock/${name}/${price}/${stockCount}`;
 
     try {
       await axios.post(

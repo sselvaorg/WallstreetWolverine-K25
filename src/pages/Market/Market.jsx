@@ -27,16 +27,19 @@ function Market() {
   };
   const fetchDetails = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/stock/wallet", {
-        headers: {
-          authorization: `${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await axios.get(
+        "https://api.wsw.kurukshetraceg.org.in/stock/wallet",
+        {
+          headers: {
+            authorization: `${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       setBalance(response.data.wallet);
     } catch (error) {
       console.error("Error fetching profile:", error);
-    } 
+    }
   };
   useEffect(() => {
     fetchDetails();

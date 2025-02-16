@@ -248,7 +248,7 @@
 
 export const stocks = [
   {
-    name: "ABC Industries",
+    name: "ABCIndustries",
     prices: [480, 490.0, 470.0],
     headline1: "2025-02-15T16:00:00+05:30",
     headline2: "2025-02-16T16:00:00+05:30",
@@ -259,7 +259,7 @@ export const stocks = [
   },
 
   {
-    name: "DEF Tech Ltd",
+    name: "DEFTechLtd",
     prices: [390, 400.0, 380.0],
     headline1: "2025-02-15T16:00:00+05:30",
     headline2: "2025-02-16T16:00:00+05:30",
@@ -270,7 +270,7 @@ export const stocks = [
   },
 
   {
-    name: "Clinda Pharmaceuticals",
+    name: "ClindaPharmaceuticals",
     prices: [460, 400.0, 500.0],
     headline1: "2025-02-15T16:00:00+05:30",
     headline2: "2025-02-16T16:00:00+05:30",
@@ -281,7 +281,7 @@ export const stocks = [
   },
 
   {
-    name: "Global Energy Corp",
+    name: "GlobalEnergyCorp",
     prices: [500, 600.0, 400.0],
     headline1: "2025-02-15T16:00:00+05:30",
     headline2: "2025-02-16T16:00:00+05:30",
@@ -293,7 +293,7 @@ export const stocks = [
   },
 
   {
-    name: "LMN Motors",
+    name: "LMNMotors",
     prices: [420, 430.0, 300.0],
     headline1: "2025-02-15T17:00:00+05:30",
     headline2: "2025-02-16T17:00:00+05:30",
@@ -305,7 +305,7 @@ export const stocks = [
   },
 
   {
-    name: "PDF Software Solutions",
+    name: "PDFSoftwareSolutions",
     prices: [300, 375.0, 200.0],
     headline1: "2025-02-15T17:00:00+05:30",
     headline2: "2025-02-16T17:00:00+05:30",
@@ -317,7 +317,7 @@ export const stocks = [
   },
 
   {
-    name: "Eclipse Solar Technologies",
+    name: "EclipseSolarTechnologies",
     prices: [450, 470.0, 350.0],
     headline1: "2025-02-15T17:00:00+05:30",
     headline2: "2025-02-16T17:00:00+05:30",
@@ -328,7 +328,7 @@ export const stocks = [
     news2: "Eclipse Solar’s Expensive Expansion Plan Raises Concerns",
   },
   {
-    name: "Sunshine Retailers",
+    name: "SunshineRetailers",
     prices: [100, 150.0, 50.0],
     headline1: "2025-02-15T17:00:00+05:30",
     headline2: "2025-02-16T17:00:00+05:30",
@@ -340,7 +340,7 @@ export const stocks = [
   },
 
   {
-    name: "Titun Manufacturing",
+    name: "TitunManufacturing",
     prices: [1000, 900.0, 1300.0],
     headline1: "2025-02-15T18:00:00+05:30",
     headline2: "2025-02-16T18:00:00+05:30",
@@ -353,7 +353,7 @@ export const stocks = [
   },
 
   {
-    name: "Quantum Telecom",
+    name: "QuantumTelecom",
     prices: [4000, 3000.0, 2500.0],
     headline1: "2025-02-15T18:00:00+05:30",
     headline2: "2025-02-16T18:00:00+05:30",
@@ -366,7 +366,7 @@ export const stocks = [
   },
 
   {
-    name: "kickdonalds Foods",
+    name: "kickdonaldsFoods",
     prices: [60, 260.0, 360.0],
     headline1: "2025-02-15T18:00:00+05:30",
     headline2: "2025-02-16T18:00:00+05:30",
@@ -379,7 +379,7 @@ export const stocks = [
   },
 
   {
-    name: "Zipla Pharmaceuticals",
+    name: "ZiplaPharmaceuticals",
     prices: [530, 530.0, 400.0],
     headline1: "2025-02-15T18:00:00+05:30",
     headline2: "2025-02-16T18:00:00+05:30",
@@ -392,7 +392,7 @@ export const stocks = [
   },
 
   {
-    name: "Horizon Electric",
+    name: "HorizonElectric",
     prices: [10000, 10100.0, 6000.0],
     headline1: "2025-02-15T19:00:00+05:30",
     headline2: "2025-02-16T19:00:00+05:30",
@@ -403,7 +403,7 @@ export const stocks = [
   },
 
   {
-    name: "Velosity Motors",
+    name: "VelosityMotors",
     prices: [410, 430.0, 395.0],
     headline1: "2025-02-15T19:00:00+05:30",
     headline2: "2025-02-16T19:00:00+05:30",
@@ -415,7 +415,7 @@ export const stocks = [
   },
 
   {
-    name: "CTpex Chemicals",
+    name: "CTpexChemicals",
     prices: [555, 500.0, 460.0],
     headline1: "2025-02-15T19:00:00+05:30",
     headline2: "2025-02-16T19:00:00+05:30",
@@ -428,7 +428,7 @@ export const stocks = [
   },
 
   {
-    name: "Alpha Electronics",
+    name: "AlphaElectronics",
     prices: [600, 600.0, 1000.0],
     headline1: "2025-02-15T19:00:00+05:30",
     headline2: "2025-02-16T19:00:00+05:30",
@@ -441,7 +441,7 @@ export const stocks = [
   },
 
   {
-    name: "KicroKax Communications",
+    name: "KicroKaxCommunications",
     prices: [444, 474.0, 484.0],
     headline1: "2025-02-15T21:00:00+05:30",
     headline2: "2025-02-16T21:00:00+05:30",
@@ -454,7 +454,7 @@ export const stocks = [
   },
 
   {
-    name: "AquaDynamics Corp.",
+    name: "AquaDynamicsCorp.",
     prices: [699, 799.0, 349.0],
     headline1: "2025-02-15T21:00:00+05:30",
     headline2: "2025-02-16T21:00:00+05:30",
@@ -467,7 +467,7 @@ export const stocks = [
   },
 
   {
-    name: "OceanX Technologies",
+    name: "OceanXTechnologies",
     prices: [500, 530.0, 440.0],
     headline1: "2025-02-15T21:00:00+05:30",
     headline2: "2025-02-16T21:00:00+05:30",
@@ -479,7 +479,7 @@ export const stocks = [
   },
 
   {
-    name: "MarineTech Innovations",
+    name: "MarineTechInnovations",
     prices: [7500, 6000.0, 7000.0],
     headline1: "2025-02-15T21:00:00+05:30",
     headline2: "2025-02-16T21:00:00+05:30",
@@ -491,7 +491,7 @@ export const stocks = [
   },
 
   {
-    name: "BlueWave Systems",
+    name: "BlueWaveSystems",
     prices: [5200, 5250.0, 5100.0],
     headline1: "2025-02-15T22:00:00+05:30",
     headline2: "2025-02-16T22:00:00+05:30",
@@ -503,7 +503,7 @@ export const stocks = [
   },
 
   {
-    name: "Seaventure Technologies",
+    name: "SeaventureTechnologies",
     prices: [8000, 16000.0, 18000.0],
     headline1: "2025-02-15T22:00:00+05:30",
     headline2: "2025-02-16T22:00:00+05:30",
@@ -527,7 +527,7 @@ export const stocks = [
   },
 
   {
-    name: "DeepCurrent Robotics",
+    name: "DeepCurrentRobotics",
     prices: [710, 780.0, 750.0],
     headline1: "2025-02-15T22:00:00+05:30",
     headline2: "2025-02-16T22:00:00+05:30",

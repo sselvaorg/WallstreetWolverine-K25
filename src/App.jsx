@@ -9,7 +9,9 @@ import { Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import Loader from "./components/Loader/Loader";
 import PropTypes from "prop-types";
-
+import { AppProvider } from "./context/AppContext";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { AuthProvider } from "./context/AuthContext";
 const Home = lazy(() => import("./pages/Home/Home"));
 const Market = lazy(() => import("./pages/Market/Market"));
 const StockPage = lazy(() => import("./pages/Market/components/StockPage"));
@@ -58,47 +60,60 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <div
-        className={isLoading ? "blur-md" : "blur-0 transition-all duration-500"}
+      <GoogleOAuthProvider
+        clientId={import.meta.env.VITE_GOOGLE_OAUTH_CLIENT_ID}
       >
-        <Suspense fallback={<Loader isLarge />}>
-          <Toaster
-            position="top-center"
-            toastOptions={{
-              className: "z-[99999] mt-5",
-            }}
-            reverseOrder={false}
-          />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/market" element={<Market />} />
-            <Route path="/stock/:id" element={<StockPage />} />
-            <Route
-              path="/profile"
-              element={<ProtectedRoute element={<Profile />} />}
-            />
-            <Route path="/instructions" element={<Instructions />} />
-            <Route path="/rules" element={<Rules />} />
-            <Route
-              path="/history"
-              element={<ProtectedRoute element={<History />} />}
-            />
-            <Route path="/contact" element={<Contact />} />
-            <Route
-              path="/login"
-              element={!getAuthStatus() ? <Login /> : <Navigate to="/" />}
-            />
-            <Route path="/register" element={<Register />} />
-            <Route
-              path="*"
-              element={
-                getAuthStatus() ? <Navigate to="/" /> : <Navigate to="/login" />
+        <AppProvider>
+          <AuthProvider>
+            <div
+              className={
+                isLoading ? "blur-md" : "blur-0 transition-all duration-500"
               }
-            />
-          </Routes>
-        </Suspense>
-      </div>
+            >
+              <Suspense fallback={<Loader isLarge />}>
+                <Toaster
+                  position="top-center"
+                  toastOptions={{
+                    className: "z-[99999] mt-5",
+                  }}
+                  reverseOrder={false}
+                />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/market" element={<Market />} />
+                  <Route path="/stock/:id" element={<StockPage />} />
+                  <Route
+                    path="/profile"
+                    element={<ProtectedRoute element={<Profile />} />}
+                  />
+                  <Route path="/instructions" element={<Instructions />} />
+                  <Route path="/rules" element={<Rules />} />
+                  <Route
+                    path="/history"
+                    element={<ProtectedRoute element={<History />} />}
+                  />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route
+                    path="/login"
+                    element={!getAuthStatus() ? <Login /> : <Navigate to="/" />}
+                  />
+                  <Route path="/register" element={<Register />} />
+                  <Route
+                    path="*"
+                    element={
+                      getAuthStatus() ? (
+                        <Navigate to="/" />
+                      ) : (
+                        <Navigate to="/login" />
+                      )
+                    }
+                  />
+                </Routes>
+              </Suspense>
+            </div>
+          </AuthProvider>
+        </AppProvider>
+      </GoogleOAuthProvider>
     </Router>
   );
 }

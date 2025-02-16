@@ -18,11 +18,14 @@ export default function Profile() {
   const fetchDetails = async () => {
     //console.log("token", localStorage.getItem("token"));
     try {
-      const response = await axios.get("http://localhost:5000/profile", {
-        headers: {
-          authorization: `${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await axios.get(
+        "https://api.wsw.kurukshetraceg.org.in/profile",
+        {
+          headers: {
+            authorization: `${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       const { userTable, stockTable } = response.data.profile;
       // console.log("User Data:", userTable);

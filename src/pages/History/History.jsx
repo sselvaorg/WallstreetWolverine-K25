@@ -101,11 +101,14 @@ function History() {
 
   const fetchHistory = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/history", {
-        headers: {
-          authorization: localStorage.getItem("token"),
-        },
-      });
+      const response = await axios.get(
+        "https://api.wsw.kurukshetraceg.org.in/history",
+        {
+          headers: {
+            authorization: localStorage.getItem("token"),
+          },
+        }
+      );
       setHistory(response.data.historyData);
     } catch (error) {
       console.error("Error occurred :", error);

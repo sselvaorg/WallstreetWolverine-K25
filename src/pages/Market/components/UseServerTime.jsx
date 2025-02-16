@@ -7,8 +7,10 @@ const useServerTime = () => {
   useEffect(() => {
     const fetchServerTime = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/time");
-        
+        const response = await axios.get(
+          "https://api.wsw.kurukshetraceg.org.in/time"
+        );
+
         const serverTime = new Date(response.data.serverTime);
         const localTime = new Date();
 
